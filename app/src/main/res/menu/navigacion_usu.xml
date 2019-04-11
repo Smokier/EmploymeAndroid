@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/perfil"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Perfil"/>
+    <item
+        android:id="@+id/soli"
+        android:icon="@drawable/ic_contact_mail_black_24dp"
+        android:title="Solicitudes"/>
+    <item
+        android:id="@+id/portafolio"
+        android:icon="@drawable/ic_folder_black_24dp"
+        android:title="Portafolio"/>
+    <item
+        android:id="@+id/opciones"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Opciones"/>
+</menu>
