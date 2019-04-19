@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Employ.me</string>
+    <string name="str_asp">Aspirante</string>
+    <string name="str_emp">Empresa</string>
+    <string name="str_cargo">Seleccione su cargo.</string>
+
 </resources>
