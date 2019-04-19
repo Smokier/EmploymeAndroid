@@ -63,7 +63,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Si no tienes una cuenta puedes registrarte aqui"
+        android:text="@string/registro"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/Blanco"
         app:layout_constraintBottom_toBottomOf="parent"
