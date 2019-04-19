@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Employ.me</string>
+<<<<<<< HEAD
     <string name="str_asp">Aspirante</string>
     <string name="str_emp">Empresa</string>
     <string name="str_cargo">Seleccione su cargo.</string>
 
+=======
+    <string name="registro">Registrarse</string>
+    <string name="term">Si no tienes una cuenta puedes registrarte aqui</string>
+>>>>>>> a701977bde8a3e0ec089bf95ac4f7e4950896f45
 </resources>

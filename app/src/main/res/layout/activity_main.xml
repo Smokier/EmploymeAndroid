@@ -16,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_blanco"
-        android:text="Registrarse"
+        android:text="@str"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -62,11 +62,16 @@
         android:background="#d8000000"
         android:gravity="center"
         android:orientation="vertical"
+<<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
+=======
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+>>>>>>> a701977bde8a3e0ec089bf95ac4f7e4950896f45
 
         <ImageView
             android:id="@+id/imageView3"
