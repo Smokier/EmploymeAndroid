@@ -3,30 +3,26 @@ package com.example.employme;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
 
-public class Activity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     Intent intent;
     Bundle extras;
     String tipo=null;
 
-    @Override
+    EditText ed1,ed2;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.login_asp);
+
+
         intent = getIntent();
         extras=intent.getExtras();
         tipo=extras.getString("Tipo");
 
-    }
-
-    public void sendLogin(View view) {
-
-        intent = new Intent(this,Login.class);
-        intent.putExtra("Tipo",tipo);
-        startActivity(intent);
 
     }
+
+
 }

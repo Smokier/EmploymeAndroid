@@ -3,7 +3,7 @@
 
     <string name="str_asp">Aspirante</string>
     <string name="str_emp">Empresa</string>
-    <string name="str_cargo">Seleccione su cargo.</string>
+    <string name="str_cargo"><b>Seleccione su cargo.</b></string>
 
     <string name="registro">Registrarse</string>
     <string name="term">Si no tienes una cuenta puedes registrarte aqui</string>
