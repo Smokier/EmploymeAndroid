@@ -27,19 +27,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="145dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/btn_blanco"
-        android:text="Registrarse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="227dp"
@@ -54,23 +41,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/term"
-        android:textColor="@color/Blanco"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.913" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -93,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Nombre completo"
+                android:hint="Nombre de la empresa"
                 android:inputType="textPersonName"
                 android:textColor="@color/Blanco" />
 
@@ -102,59 +72,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="correo"
+                android:hint="Correo empresarial"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/Blanco"
                 tools:layout_editor_absoluteX="71dp"
                 tools:layout_editor_absoluteY="212dp" />
-
-            <EditText
-                android:id="@+id/editText11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="usuario"
-                android:inputType="textPersonName"
-                android:textColor="@color/Blanco"
-                tools:layout_editor_absoluteX="34dp"
-                tools:layout_editor_absoluteY="210dp" />
-
-            <EditText
-                android:id="@+id/editText12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Fecha de nacimiento"
-                android:inputType="date"
-                android:textColor="@color/Blanco"
-                tools:layout_editor_absoluteX="133dp"
-                tools:layout_editor_absoluteY="235dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radioButton6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:buttonTint="@color/Blanco"
-                    android:text="RadioButton"
-                    android:textColor="@color/Blanco"
-                    tools:text="Hombre" />
-
-                <RadioButton
-                    android:id="@+id/radioButton5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:buttonTint="@color/Blanco"
-                    android:text="RadioButton"
-                    android:textColor="@color/Blanco"
-                    tools:text="Mujer" />
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/editText13"
@@ -177,5 +99,34 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/term"
+        android:textColor="@color/Blanco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.913" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btn_blanco"
+        android:text="Registrarse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </android.support.constraint.ConstraintLayout>
