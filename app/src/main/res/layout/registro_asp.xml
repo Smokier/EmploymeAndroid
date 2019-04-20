@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SignUp">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,12 +17,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#d8000000"
         android:gravity="center"
         android:orientation="vertical"
@@ -38,17 +34,18 @@
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="476dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_blanco"
+        android:onClick="signUpAsp"
         android:text="Registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.379" />
 
     <TextView
         android:id="@+id/textView4"
@@ -64,33 +61,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/term"
-        android:textColor="@color/Blanco"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.913" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="310dp"
-        android:layout_height="398dp"
+        android:layout_height="308dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="168dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,7 +79,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -107,7 +88,7 @@
                 android:textColor="@color/Blanco" />
 
             <EditText
-                android:id="@+id/editText10"
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -118,7 +99,7 @@
                 tools:layout_editor_absoluteY="212dp" />
 
             <EditText
-                android:id="@+id/editText11"
+                android:id="@+id/user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -129,12 +110,16 @@
                 tools:layout_editor_absoluteY="210dp" />
 
             <EditText
-                android:id="@+id/editText12"
+                android:id="@+id/fn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:ems="10"
+                android:focusable="false"
                 android:hint="Fecha de nacimiento"
                 android:inputType="date"
+                android:maxLines="1"
+                android:onClick="fecha"
                 android:textColor="@color/Blanco"
                 tools:layout_editor_absoluteX="133dp"
                 tools:layout_editor_absoluteY="235dp" />
@@ -144,29 +129,40 @@
                 android:layout_height="35dp"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioButton6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:buttonTint="@color/Blanco"
-                    android:text="RadioButton"
-                    android:textColor="@color/Blanco"
-                    tools:text="Hombre" />
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/opciones_sexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioButton5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:buttonTint="@color/Blanco"
-                    android:text="RadioButton"
-                    android:textColor="@color/Blanco"
-                    tools:text="Mujer" />
+                    <RadioButton
+                        android:id="@+id/h"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/Blanco"
+                        android:text="Hombre"
+                        android:textColor="@color/Blanco"
+                        tools:text="Hombre" />
+
+                    <RadioButton
+                        android:id="@+id/m"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/Blanco"
+                        android:text="Mujer"
+                        android:textColor="@color/Blanco"
+                        tools:text="Mujer" />
+
+                </RadioGroup>
+
+
             </LinearLayout>
 
             <EditText
-                android:id="@+id/editText13"
+                android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -176,7 +172,7 @@
                 tools:layout_editor_absoluteY="320dp" />
 
             <EditText
-                android:id="@+id/editText14"
+                android:id="@+id/confirmPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

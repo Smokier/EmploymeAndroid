@@ -26,11 +26,11 @@
         android:layout_width="310dp"
         android:layout_height="398dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="228dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="212dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,8 +79,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-</android.support.constraint.ConstraintLayout>
 
 
 </android.support.constraint.ConstraintLayout>

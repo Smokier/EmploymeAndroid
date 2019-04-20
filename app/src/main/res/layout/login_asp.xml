@@ -43,7 +43,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/btn_blanco"
-        android:onClick="login"
+        android:onClick="loginAsp"
         android:text="Iniciar sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.485"
