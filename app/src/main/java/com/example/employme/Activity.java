@@ -29,4 +29,12 @@ public class Activity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void sendSignUp(View view) {
+
+        intent = new Intent(this,SignUp.class);
+        intent.putExtra("Tipo",tipo);
+        startActivity(intent);
+
+    }
 }

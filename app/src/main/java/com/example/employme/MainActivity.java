@@ -29,5 +29,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void sendAspirante (View view)
+    {
+        intent = new Intent(this,Activity.class);
+        tipo="Aspirante";
+        intent.putExtra("Tipo",tipo);
+        startActivity(intent);
+    }
 }
