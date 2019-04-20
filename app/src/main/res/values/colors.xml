@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="Blanco">#FFFFFF</color>
     <color name="Rojo">#A32020</color>
+    <color name="Negro">#000000</color>
+
 </resources>
