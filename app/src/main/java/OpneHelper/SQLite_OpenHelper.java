@@ -9,7 +9,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.employme.Aspirante;
+import com.example.employme.Cifrado;
 import com.example.employme.Empresa;
+
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.InvalidParameterSpecException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+
 
 public class SQLite_OpenHelper extends SQLiteOpenHelper{
     public SQLite_OpenHelper(Context context,String name,SQLiteDatabase.CursorFactory factory,int version) {
@@ -78,10 +91,9 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper{
     }
 
     //Metodo para registrar empresas
-    public void insertarEmp(Empresa e)
-    {
+    public void insertarEmp(Empresa e) throws Exception {
+        Cifrado c = new Cifrado();
         ContentValues data = new ContentValues();
-
         data.put("nom_emp",e.getNom_emp());
         data.put("email_emp",e.getEmail_emp());
         data.put("psw_emp",e.getPsw_emp());
@@ -91,8 +103,9 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper{
 
 
     //metodo para verificar si el aspirante esta registrado
-    public Cursor consultarEmpresas(String usu, String pass) throws SQLException
-    {
+    public Cursor consultarEmpresas(String usu, String pass) throws SQLException, InvalidKeySpecException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException, InvalidParameterSpecException {
+
+        Cifrado c = new Cifrado();
         Cursor mcursor =null;
         mcursor=this.getReadableDatabase().query("datosempresa",new String[]{"id_emp","nom_emp","email_emp","psw_emp"},"email_emp like'"+usu+"'and psw_emp like '"+pass+"'",null,null,null,null);
 
