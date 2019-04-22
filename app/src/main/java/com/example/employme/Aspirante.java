@@ -9,6 +9,7 @@ public class Aspirante {
     private String usu_asp;
     private String sex_asp;
     private String numtel_asp;
+    private String status;
 
 
     public String getNom_asp() {
@@ -65,5 +66,13 @@ public class Aspirante {
 
     public void setNumtel_asp(String numtel_asp) {
         this.numtel_asp = numtel_asp;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

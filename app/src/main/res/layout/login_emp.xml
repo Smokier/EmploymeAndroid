@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Login">
 
 
 
@@ -34,22 +34,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </LinearLayout>
+
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signUpCompany"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/btn_blanco"
+        android:onClick="loginEmp"
         android:text="Iniciar sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/passCompany" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/passCompany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -61,7 +63,7 @@
         android:textColorHint="@color/Blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/userCompany" />
 
     <TextView
         android:id="@+id/textView"
@@ -74,13 +76,14 @@
         android:text="@string/registro"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/Blanco"
+        android:onClick="sendSignUp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/signUpCompany" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/userCompany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

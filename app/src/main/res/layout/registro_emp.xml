@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SignUp">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,13 +17,15 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#d8000000"
         android:gravity="center"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="83dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </LinearLayout>
 
@@ -34,13 +36,17 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Employ.me"
         android:textAlignment="center"
         android:textColor="@color/Blanco"
         android:textSize="45sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -59,7 +65,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -68,19 +74,17 @@
                 android:textColor="@color/Blanco" />
 
             <EditText
-                android:id="@+id/editText10"
-                android:layout_width="wrap_content"
+                android:id="@+id/userCompany"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Correo empresarial"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/Blanco"
-                tools:layout_editor_absoluteX="71dp"
-                tools:layout_editor_absoluteY="212dp" />
+                android:hint="Nombre de usuario"
+                android:inputType="textPersonName"
+                android:textColor="@color/Blanco" />
 
             <EditText
-                android:id="@+id/editText13"
-                android:layout_width="wrap_content"
+                android:id="@+id/passCompany"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Contraseña"
@@ -89,7 +93,7 @@
                 tools:layout_editor_absoluteY="320dp" />
 
             <EditText
-                android:id="@+id/editText14"
+                android:id="@+id/confirmpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -97,36 +101,33 @@
                 android:inputType="textPassword"
                 android:textColor="@color/Blanco" />
 
+            <EditText
+                android:id="@+id/emailCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Correo empresarial"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/Blanco"
+                tools:layout_editor_absoluteX="71dp"
+                tools:layout_editor_absoluteY="212dp" />
+
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/term"
-        android:textColor="@color/Blanco"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.913" />
-
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signUpCompany"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="436dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/btn_blanco"
+        android:onClick="signUpEmp"
         android:text="Registrarse"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
 </android.support.constraint.ConstraintLayout>
