@@ -74,19 +74,17 @@
                 android:textColor="@color/Blanco" />
 
             <EditText
-                android:id="@+id/emailCompany"
-                android:layout_width="wrap_content"
+                android:id="@+id/userCompany"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Correo empresarial"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/Blanco"
-                tools:layout_editor_absoluteX="71dp"
-                tools:layout_editor_absoluteY="212dp" />
+                android:hint="Nombre de usuario"
+                android:inputType="textPersonName"
+                android:textColor="@color/Blanco" />
 
             <EditText
                 android:id="@+id/passCompany"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Contraseña"
@@ -102,6 +100,17 @@
                 android:hint="Confirmar contraseña"
                 android:inputType="textPassword"
                 android:textColor="@color/Blanco" />
+
+            <EditText
+                android:id="@+id/emailCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Correo empresarial"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/Blanco"
+                tools:layout_editor_absoluteX="71dp"
+                tools:layout_editor_absoluteY="212dp" />
 
         </LinearLayout>
     </ScrollView>
