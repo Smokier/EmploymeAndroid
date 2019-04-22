@@ -7,44 +7,156 @@
 
     <ImageView
         android:id="@+id/foto_perfil"
-        android:layout_width="wrap_content"
-        android:layout_height="129dp"
+        android:layout_width="133dp"
+        android:layout_height="125dp"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars[3]" />
+        tools:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
+    <android.support.v7.widget.CardView
+        android:layout_width="342dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="111dp"
+                android:layout_height="101dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                tools:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="137dp"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre git"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="github.com/user" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Repositorie/Holacomoestas" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Repositorie/Rubrik" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="342dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/7"
+                android:layout_width="111dp"
+                android:layout_height="101dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                tools:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="137dp"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre yt"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="youtbe.com/user/hola" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="suscriptores" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="videos" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="310dp"
-        android:layout_height="230dp"
+        android:layout_height="189dp"
         android:layout_marginStart="8dp"
-<<<<<<< HEAD
         android:layout_marginTop="8dp"
-=======
-        android:layout_marginTop="228dp"
->>>>>>> dbb2694d00d57d7477ad6385ba67fd247ae05001
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintTop_toBottomOf="@+id/foto_perfil"
-        app:layout_constraintVertical_bias="0.006">
-=======
-        app:layout_constraintTop_toTopOf="parent">
->>>>>>> dbb2694d00d57d7477ad6385ba67fd247ae05001
+        app:layout_constraintTop_toBottomOf="@+id/foto_perfil">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -119,50 +231,7 @@
         </LinearLayout>
     </ScrollView>
 
-<<<<<<< HEAD
-    <android.support.v7.widget.CardView
-        android:layout_width="297dp"
-        android:layout_height="97dp"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="449dp" >
-
-        <LinearLayout
-            android:layout_width="106dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="104dp"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/ic_account_circle_black_24dp" />
-
-            <LinearLayout
-                android:layout_width="169dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
-                    tools:layout_editor_absoluteX="167dp"
-                    tools:layout_editor_absoluteY="428dp" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="297dp"
-        android:layout_height="97dp"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="575dp" />
-
 
 </android.support.constraint.ConstraintLayout>
 
-=======
->>>>>>> dbb2694d00d57d7477ad6385ba67fd247ae05001
 
