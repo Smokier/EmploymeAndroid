@@ -68,25 +68,9 @@ public class SignUp extends AppCompatActivity {
     String claveAsp=null;
     String claveEmp=null;
     String s =null;
-            String flag=null;
     Aspirante asp = new Aspirante();
     Empresa emp = new Empresa();
 
-    SecretKey originalKey;
-    INodeJS node;
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
-
-    protected  void onStop()
-    {
-        compositeDisposable.clear();
-        super.onStop();
-    }
-
-    protected void onDestroy()
-    {
-        compositeDisposable.clear();
-        super.onDestroy();
-    }
     protected void onCreate(Bundle savedInstanceState) {
 
         intent = getIntent();
@@ -114,14 +98,12 @@ public class SignUp extends AppCompatActivity {
     private void cargarPreferenciasEmp() {
         SharedPreferences preferences = getSharedPreferences("cifrado", Context.MODE_PRIVATE);
         claveEmp = preferences.getString("claveEmp","No existe la información");
-        Toast.makeText(this,claveEmp,Toast.LENGTH_SHORT).show();
 
     }
 
     private void cargarPreferenciasAsp() {
         SharedPreferences preferences = getSharedPreferences("cifrado", Context.MODE_PRIVATE);
         claveAsp = preferences.getString("claveAsp","No existe la información");
-        Toast.makeText(this,claveAsp,Toast.LENGTH_SHORT).show();
 
     }
 
@@ -307,12 +289,7 @@ public class SignUp extends AppCompatActivity {
             editor.putString("claveEmp", encodedKey);
             editor.commit();
 
-
-
         if((pass.getText().toString()).equals(confpass.getText().toString())) {
-
-
-
 
             emp.setNom_emp(nom.getText().toString());
             emp.setEmail_emp(mail.getText().toString());
