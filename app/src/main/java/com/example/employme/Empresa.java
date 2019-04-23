@@ -3,7 +3,7 @@ package com.example.employme;
 public class Empresa {
 
     private String nom_emp;
-    private String user_emp;
+    private String usu_emp;
     private String email_emp;
     private String psw_emp;
     private String sitio_pemp;
@@ -49,11 +49,11 @@ public class Empresa {
         this.numtel_pemp = numtel_pemp;
     }
 
-    public String getUser_emp() {
-        return user_emp;
+    public String getUsu_emp() {
+        return usu_emp;
     }
 
-    public void setUser_emp(String user_emp) {
-        this.user_emp = user_emp;
+    public void setUsu_emp(String usu_emp) {
+        this.usu_emp = usu_emp;
     }
 }

@@ -94,6 +94,14 @@ public class Login extends AppCompatActivity {
                     {
                         intent = new Intent(Login.this,Menu.class);
                         intent.putExtra("Tipo",tipo);
+                        intent.putExtra("Id",asp.getId_asp());
+                        intent.putExtra("Nombre",asp.getNom_asp());
+                        intent.putExtra("Email",asp.getEmail_asp());
+                        intent.putExtra("Username",asp.getUsu_asp());
+                        intent.putExtra("Pass",asp.getPsw_asp());
+                        intent.putExtra("Foto",asp.getFoto_asp());
+                        intent.putExtra("Tipo",tipo);
+                        Toast.makeText(Login.this,asp.getId_asp(),Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
                 }
@@ -128,9 +136,12 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Empresa> call, Response<Empresa> response) {
                     Empresa emp =response.body();
-                    if(emp.getEmail_emp().equals(username.getText().toString()) || emp.getUser_emp().equals(username.getText().toString()))
+                    if(emp.getEmail_emp().equals(username.getText().toString()) || emp.getUsu_emp().equals(username.getText().toString()))
                     {
                         intent = new Intent(Login.this,Menu.class);
+                        intent.putExtra("Nombre",emp.getNom_emp());
+                        intent.putExtra("Email",emp.getEmail_emp());
+                        intent.putExtra("Username",emp.getUsu_emp());
                         intent.putExtra("Tipo",tipo);
                         startActivity(intent);
                     }
@@ -142,8 +153,6 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-
-
 
         }
         catch (SQLException e)

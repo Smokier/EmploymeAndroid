@@ -3,12 +3,14 @@ package com.example.employme;
 public class Aspirante {
 
     private String nom_asp;
+    private String id_asp;
     private String email_asp;
     private String psw_asp;
     private String fn_asp;
     private String usu_asp;
     private String sex_asp;
     private String numtel_asp;
+    private String foto_asp;
     private String status;
 
 
@@ -74,5 +76,21 @@ public class Aspirante {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getFoto_asp() {
+        return foto_asp;
+    }
+
+    public void setFoto_asp(String foto_asp) {
+        this.foto_asp = foto_asp;
+    }
+
+    public String getId_asp() {
+        return id_asp;
+    }
+
+    public void setId_asp(String id_asp) {
+        this.id_asp = id_asp;
     }
 }

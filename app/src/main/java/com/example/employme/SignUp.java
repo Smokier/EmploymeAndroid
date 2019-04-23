@@ -14,24 +14,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.InvalidParameterSpecException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Properties;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -40,16 +27,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import OpneHelper.SQLite_OpenHelper;
-import Retrofit.INodeJS;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 import Retrofit.RetrofitClient;
 
 public class SignUp extends AppCompatActivity {
@@ -161,7 +141,7 @@ public class SignUp extends AppCompatActivity {
         u=findViewById(R.id.user);
         pass=findViewById(R.id.password);
         confpass=findViewById(R.id.confirmPass);
-        mail=findViewById(R.id.email);
+        mail=findViewById(R.id.mail);
 
         SecretKeySpec key=null;
 
@@ -276,7 +256,7 @@ public class SignUp extends AppCompatActivity {
         if((pass.getText().toString()).equals(confpass.getText().toString())) {
 
             emp.setNom_emp(nom.getText().toString());
-            emp.setUser_emp(u.getText().toString());
+            emp.setUsu_emp(u.getText().toString());
             emp.setEmail_emp(mail.getText().toString());
             emp.setPsw_emp(c.encriptar(pass.getText().toString(),key));
 
@@ -284,7 +264,7 @@ public class SignUp extends AppCompatActivity {
 
             Call<String> call = RetrofitClient.getInstance()
                                                 .getApi()
-                                                .registerEmp(emp.getNom_emp(),emp.getUser_emp(),pass.getText().toString(),
+                                                .registerEmp(emp.getNom_emp(),emp.getUsu_emp(),pass.getText().toString(),
                                                                 confpass.getText().toString(),emp.getEmail_emp(),"Android");
             call.enqueue(new Callback<String>() {
                 @Override

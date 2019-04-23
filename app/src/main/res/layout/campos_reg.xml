@@ -83,7 +83,7 @@
         android:inputType="textPersonName"
         android:hint="Nombre Completo"
         android:textColor="@color/Blanco"
-        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintBottom_toTopOf="@+id/mail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -105,7 +105,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/mail"
         android:layout_width="289dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

@@ -1,7 +1,10 @@
 package Retrofit;
 
+import android.provider.CallLog;
+
 import com.example.employme.Aspirante;
 import com.example.employme.Empresa;
+import com.example.employme.Github;
 
 import java.util.List;
 
@@ -10,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface INodeJS  {
 
@@ -28,5 +32,13 @@ public interface INodeJS  {
     @POST("/loginemp")
     @FormUrlEncoded
     Call<Empresa>loginEmp(@Field("usu_e")String user,@Field("pass_e")String pass,@Field("device")String device);
+
+    @PUT("/fotoasp")
+    @FormUrlEncoded
+    Call<Aspirante>getFoto(@Field("id")String id,@Field("device")String dev);
+
+    @POST("/perfilasp")
+    @FormUrlEncoded
+    Call<List<Github>> getRepositories(@Field("id")String id, @Field("device")String dev);
 
 }
