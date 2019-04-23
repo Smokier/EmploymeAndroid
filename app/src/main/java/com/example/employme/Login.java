@@ -39,11 +39,7 @@ public class Login extends AppCompatActivity {
     Intent intent;
     Bundle extras;
     String tipo=null;
-    SQLite_OpenHelper db = new SQLite_OpenHelper(this,"Employme",null,1);
-    Cifrado c = new Cifrado();
     EditText username,pass;
-    String claveEmp=null;
-    SecretKey originalKey;
 
     protected void onCreate(Bundle savedInstanceState) {
         intent = getIntent();
@@ -119,33 +115,36 @@ public class Login extends AppCompatActivity {
 
         username=findViewById(R.id.userCompany);
         pass=findViewById(R.id.passCompany);
-        byte[] decodedKey = Base64.getDecoder().decode(claveEmp);
-        originalKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
         try {
 
-            Cursor cursor =db.consultarEmpresas(username.getText().toString(),c.encriptar(pass.getText().toString(),originalKey));
-            String nombre=null;
-            if(cursor.getCount()>0)
-            {
+        //Se realiza la petición al servidor para obtener los datos si es que el usuario ya está registrado
+            Call<Empresa> call = RetrofitClient
+                    .getInstance()
+                    .getApi()
+                    //Se ejecuta el metodo y se envían como parametros el correo o username y contraseña del usuario
+                    .loginEmp(username.getText().toString(),pass.getText().toString(),"Android");
 
-/*       //Comentado para verificar los datos obtenidos de la bd
-                if (cursor.moveToFirst()) {
-                    //Recorremos el cursor hasta que no haya más registros
-                    do {
-                        String id= cursor.getString(0);
-                        nombre = cursor.getString(3);
-                    } while(cursor.moveToNext());
-                }*/
-                Toast.makeText(getApplicationContext(),nombre,Toast.LENGTH_SHORT).show();
+            call.enqueue(new Callback<Empresa>() {
+                @Override
+                public void onResponse(Call<Empresa> call, Response<Empresa> response) {
+                    Empresa emp =response.body();
+                    if(emp.getEmail_emp().equals(username.getText().toString()) || emp.getUser_emp().equals(username.getText().toString()))
+                    {
+                        intent = new Intent(Login.this,Menu.class);
+                        intent.putExtra("Tipo",tipo);
+                        startActivity(intent);
+                    }
+                }
 
-                intent = new Intent(this,Menu.class);
-                intent.putExtra("Tipo",tipo);
-                startActivity(intent);
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"usuario y/o password incorrectos",Toast.LENGTH_SHORT).show();
-            }
+                @Override
+                public void onFailure(Call<Empresa> call, Throwable t) {
+
+                    Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+
         }
         catch (SQLException e)
         {

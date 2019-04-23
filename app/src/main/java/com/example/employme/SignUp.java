@@ -80,30 +80,13 @@ public class SignUp extends AppCompatActivity {
         {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.registro_emp);
-            cargarPreferenciasEmp();
         }
         else if(tipo.equals("Aspirante"))
         {
 
             super.onCreate(savedInstanceState);
             setContentView(R.layout.registro_asp);
-            cargarPreferenciasAsp();
         }
-
-
-
-
-    }
-
-    private void cargarPreferenciasEmp() {
-        SharedPreferences preferences = getSharedPreferences("cifrado", Context.MODE_PRIVATE);
-        claveEmp = preferences.getString("claveEmp","No existe la información");
-
-    }
-
-    private void cargarPreferenciasAsp() {
-        SharedPreferences preferences = getSharedPreferences("cifrado", Context.MODE_PRIVATE);
-        claveAsp = preferences.getString("claveAsp","No existe la información");
 
     }
 
@@ -270,10 +253,11 @@ public class SignUp extends AppCompatActivity {
 
     }
 
-
+    //Para registrar Empresas
     public void signUpEmp(View view) throws Exception {
 
         nom=findViewById(R.id.company);
+        u=findViewById(R.id.userCompany);
         pass=findViewById(R.id.passCompany);
         confpass=findViewById(R.id.confirmpass);
         mail=findViewById(R.id.emailCompany);
@@ -292,20 +276,52 @@ public class SignUp extends AppCompatActivity {
         if((pass.getText().toString()).equals(confpass.getText().toString())) {
 
             emp.setNom_emp(nom.getText().toString());
+            emp.setUser_emp(u.getText().toString());
             emp.setEmail_emp(mail.getText().toString());
             emp.setPsw_emp(c.encriptar(pass.getText().toString(),key));
-            sendMail(mail.getText().toString());
 
-            db.abrir();
-            db.insertarEmp(emp);
-            db.cerrar();
+            //Se hace la peticion a node js para registrar los datos
 
-            Toast.makeText(getApplicationContext(),"Usuario registrado correctamente",Toast.LENGTH_SHORT).show();
+            Call<String> call = RetrofitClient.getInstance()
+                                                .getApi()
+                                                .registerEmp(emp.getNom_emp(),emp.getUser_emp(),pass.getText().toString(),
+                                                                confpass.getText().toString(),emp.getEmail_emp(),"Android");
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    s = response.body();
+                    if (s.equals("Usuario o email ya registrado"))
+                    {
+                        Log.e("Son iguales","Verdadero");
+                        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        sendMail(mail.getText().toString());
 
-            intent = new Intent(this,Login.class);
-            tipo="Empresa";
-            intent.putExtra("Tipo",tipo);
-            startActivity(intent);
+                        db.abrir();
+                        try {
+                            db.insertarEmp(emp);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        db.cerrar();
+
+                        Toast.makeText(getApplicationContext(),"Usuario registrado correctamente",Toast.LENGTH_SHORT).show();
+
+                        intent = new Intent(SignUp.this,Login.class);
+                        tipo="Empresa";
+                        intent.putExtra("Tipo",tipo);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(),"Ocurrio un error",Toast.LENGTH_SHORT).show();
+                }
+            });
+
 
         }
         else
