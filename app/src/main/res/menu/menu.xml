@@ -8,10 +8,7 @@
         android:id="@+id/soli"
         android:icon="@drawable/ic_contact_mail_black_24dp"
         android:title="Solicitudes"/>
-    <item
-        android:id="@+id/portafolio"
-        android:icon="@drawable/ic_folder_black_24dp"
-        android:title="Portafolio"/>
+
     <item
         android:id="@+id/opciones"
         android:icon="@drawable/ic_settings_black_24dp"
