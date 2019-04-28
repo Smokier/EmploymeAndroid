@@ -12,6 +12,7 @@ public class Aspirante {
     private String numtel_asp;
     private String foto_asp;
     private String status;
+    private String vyt_pasp;
 
 
     public String getNom_asp() {
@@ -92,5 +93,13 @@ public class Aspirante {
 
     public void setId_asp(String id_asp) {
         this.id_asp = id_asp;
+    }
+
+    public String getVyt_pasp() {
+        return vyt_pasp;
+    }
+
+    public void setVyt_pasp(String vyt_pasp) {
+        this.vyt_pasp = vyt_pasp;
     }
 }

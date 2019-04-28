@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
@@ -40,7 +42,10 @@ public class Login extends AppCompatActivity {
     Bundle extras;
     String tipo=null;
     EditText username,pass;
-
+    RadioButton radioButton;
+    Empresa emp;
+    Aspirante asp;
+    private boolean isActive;
     protected void onCreate(Bundle savedInstanceState) {
         intent = getIntent();
         extras=intent.getExtras();
@@ -48,9 +53,9 @@ public class Login extends AppCompatActivity {
 
         if(tipo.equals("Aspirante"))
         {
-
             super.onCreate(savedInstanceState);
             setContentView(R.layout.login_asp);
+
         }
         else if (tipo.equals("Empresa"))
         {
@@ -59,9 +64,22 @@ public class Login extends AppCompatActivity {
             setContentView(R.layout.login_emp);
         }
 
+        radioButton=findViewById(R.id.RBsession);
+        isActive=radioButton.isChecked();
 
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isActive)
+                {
+                    radioButton.setChecked(false);
+                }
+                isActive=radioButton.isChecked();
+            }
+        });
 
     }
+
 
     public void sendSignUp(View view) {
 
@@ -72,10 +90,14 @@ public class Login extends AppCompatActivity {
     }
 
 
+
+
     public void loginAsp(View view) throws Exception {
+
 
         username=findViewById(R.id.user);
         pass=findViewById(R.id.psw);
+
 
         try {
             //Se realiza la petición al servidor para obtener los datos si es que el usuario ya está registrado
@@ -88,10 +110,18 @@ public class Login extends AppCompatActivity {
             call.enqueue(new Callback<Aspirante>() {
                 @Override
                 public void onResponse(Call<Aspirante> call, Response<Aspirante> response) {
-                    Aspirante asp = response.body();
+                    asp = response.body();
 
                     if(asp.getEmail_asp().equals(username.getText().toString()) || asp.getUsu_asp().equals(username.getText().toString()))
                     {
+                        if(isActive==true)
+                        {
+                            SharedPreferences preferences = getSharedPreferences("session", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("usuario", asp.getUsu_asp());
+                            editor.putString("contra",asp.getPsw_asp());
+                            editor.commit();
+                        }
                         intent = new Intent(Login.this,Menu.class);
                         intent.putExtra("Tipo",tipo);
                         intent.putExtra("Id",asp.getId_asp());
@@ -101,8 +131,8 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("Pass",asp.getPsw_asp());
                         intent.putExtra("Foto",asp.getFoto_asp());
                         intent.putExtra("Tipo",tipo);
-                        Toast.makeText(Login.this,asp.getId_asp(),Toast.LENGTH_SHORT).show();
                         startActivity(intent);
+                        finish();
                     }
                 }
 
@@ -135,7 +165,7 @@ public class Login extends AppCompatActivity {
             call.enqueue(new Callback<Empresa>() {
                 @Override
                 public void onResponse(Call<Empresa> call, Response<Empresa> response) {
-                    Empresa emp =response.body();
+                    emp =response.body();
                     if(emp.getEmail_emp().equals(username.getText().toString()) || emp.getUsu_emp().equals(username.getText().toString()))
                     {
                         intent = new Intent(Login.this,Menu.class);
@@ -144,6 +174,7 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("Username",emp.getUsu_emp());
                         intent.putExtra("Tipo",tipo);
                         startActivity(intent);
+                        finish();
                     }
                 }
 
@@ -161,4 +192,5 @@ public class Login extends AppCompatActivity {
         }
 
     }
+
 }

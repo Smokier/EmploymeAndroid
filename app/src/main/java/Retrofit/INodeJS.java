@@ -41,4 +41,8 @@ public interface INodeJS  {
     @FormUrlEncoded
     Call<List<Github>> getRepositories(@Field("id")String id, @Field("device")String dev);
 
+    @PUT("/perfilasp")
+    @FormUrlEncoded
+    Call<Aspirante> getVideo(@Field("id")String id,@Field("device")String dev);
+
 }

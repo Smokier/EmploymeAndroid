@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:background="?android:attr/windowBackground"
+        android:background="#222d31"
         app:menu="@menu/menu" />
 
 </RelativeLayout>
