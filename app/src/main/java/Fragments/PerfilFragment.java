@@ -155,7 +155,6 @@ public class PerfilFragment extends Fragment {
                 for (int i =0; i<git.size();i++)
                 {
                     repos[i]=git.get(i).getName();
-                    links[i]=git.get(i).getHtml_url();
                 }
                 listView.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,repos));
             }

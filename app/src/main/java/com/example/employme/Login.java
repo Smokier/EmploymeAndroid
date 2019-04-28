@@ -43,8 +43,8 @@ public class Login extends AppCompatActivity {
     String tipo=null;
     EditText username,pass;
     RadioButton radioButton;
-    Empresa emp;
-    Aspirante asp;
+    private Empresa emp;
+    private Aspirante asp;
     private boolean isActive;
     protected void onCreate(Bundle savedInstanceState) {
         intent = getIntent();
@@ -88,9 +88,6 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
 
     }
-
-
-
 
     public void loginAsp(View view) throws Exception {
 
@@ -168,9 +165,18 @@ public class Login extends AppCompatActivity {
                     emp =response.body();
                     if(emp.getEmail_emp().equals(username.getText().toString()) || emp.getUsu_emp().equals(username.getText().toString()))
                     {
+                        if(isActive==true)
+                        {
+                            SharedPreferences preferences = getSharedPreferences("sessionEmp", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("usuarioEmp", emp.getUsu_emp());
+                            editor.putString("contraEmp",emp.getPsw_emp());
+                            editor.commit();
+                        }
                         intent = new Intent(Login.this,Menu.class);
                         intent.putExtra("Nombre",emp.getNom_emp());
                         intent.putExtra("Email",emp.getEmail_emp());
+                        intent.putExtra("Pass",emp.getPsw_emp());
                         intent.putExtra("Username",emp.getUsu_emp());
                         intent.putExtra("Tipo",tipo);
                         startActivity(intent);
