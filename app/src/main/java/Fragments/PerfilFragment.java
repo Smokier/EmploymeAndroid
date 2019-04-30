@@ -126,7 +126,7 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onResponse(Call<Aspirante> call, Response<Aspirante> response) {
 
-                Picasso.with(getActivity()).load("http://34.227.162.181:8080/"+response.body().getFoto_asp()).into(imageView);
+                Picasso.with(getContext()).load("http://3.93.218.234/"+response.body().getFoto_asp()).into(imageView);
             }
 
             @Override
@@ -143,7 +143,6 @@ public class PerfilFragment extends Fragment {
 
                 List<Github> git = response.body();
                 String [] repos = new String[git.size()];
-                String [] links = new String[git.size()];
 
                 for (Github g: git)
                 {

@@ -7,7 +7,7 @@
 <item
     android:id="@+id/soli"
     android:icon="@drawable/ic_contact_mail_black_24dp"
-    android:title="Solicitudes"/>
+    android:title="Interesadas"/>
 
 <item
     android:id="@+id/opciones"

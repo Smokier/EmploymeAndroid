@@ -45,4 +45,13 @@ public interface INodeJS  {
     @FormUrlEncoded
     Call<Aspirante> getVideo(@Field("id")String id,@Field("device")String dev);
 
+    @POST("/asp-interested")
+    @FormUrlEncoded
+    Call<Empresa> getInteresadas(@Field("id")String id,@Field("device")String dev);
+
+    @POST("/asp-interested")
+    @FormUrlEncoded
+    Call<List<Empresa>> getInteresadass(@Field("id")String id,@Field("device")String dev);
+
+
 }

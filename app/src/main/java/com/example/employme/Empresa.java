@@ -8,6 +8,19 @@ public class Empresa {
     private String psw_emp;
     private String sitio_pemp;
     private String numtel_pemp;
+    private String foto_emp;
+
+    public Empresa ()
+    {
+
+    }
+
+    public Empresa(String nom_emp, String usu_emp, String email_emp, String foto_emp) {
+        this.nom_emp = nom_emp;
+        this.usu_emp = usu_emp;
+        this.email_emp = email_emp;
+        this.foto_emp = foto_emp;
+    }
 
     public String getNom_emp() {
         return nom_emp;
@@ -55,5 +68,13 @@ public class Empresa {
 
     public void setUsu_emp(String usu_emp) {
         this.usu_emp = usu_emp;
+    }
+
+    public String getFoto_emp() {
+        return foto_emp;
+    }
+
+    public void setFoto_emp(String foto_emp) {
+        this.foto_emp = foto_emp;
     }
 }
