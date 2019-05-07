@@ -9,15 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.employme.Aspirante;
 import com.example.employme.Empresa;
 import com.example.employme.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class InteresadasAdapter extends RecyclerView.Adapter<InteresadasAdapter.ViewHolder> {
-
-
+public class AspirantesAdapter extends RecyclerView.Adapter<AspirantesAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -33,33 +32,34 @@ public class InteresadasAdapter extends RecyclerView.Adapter<InteresadasAdapter.
         }
     }
 
-    public List<Empresa> emps;
+    public List<Aspirante> asps;
     Context context;
-    public InteresadasAdapter (Context context, List<Empresa> emps)
+
+    public AspirantesAdapter (Context context, List<Aspirante> asps)
     {
         this.context=context;
-        this.emps=emps;
+        this.asps=asps;
     }
-
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater .from(viewGroup.getContext()).inflate(R.layout.card_solicitudes,viewGroup,false);
-        ViewHolder viewHolder = new ViewHolder(view);
+    public AspirantesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_solicitudes,viewGroup,false);
+        AspirantesAdapter.ViewHolder viewHolder = new AspirantesAdapter.ViewHolder(view);
         return  viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull InteresadasAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.nomEmp.setText(emps.get(i).getNom_emp());
-        viewHolder.emailEmp.setText(emps.get(i).getNom_emp());
-        Picasso.with(context.getApplicationContext()).load("http://3.93.218.234/"+emps.get(i).getFoto_emp()).into(viewHolder.fotoEmp);
+    public void onBindViewHolder(@NonNull AspirantesAdapter.ViewHolder viewHolder, int i) {
+        viewHolder.nomEmp.setText(asps.get(i).getNom_asp());
+        viewHolder.emailEmp.setText(asps.get(i).getEmail_asp());
+        viewHolder.tipoEmp.setText(asps.get(i).getFn_asp() +" Años");
+        Picasso.with(context.getApplicationContext()).load("http://3.93.218.234/"+asps.get(i).getFoto_asp()).into(viewHolder.fotoEmp);
+
     }
 
     @Override
     public int getItemCount() {
-        return emps.size();
+        return asps.size() ;
     }
-
 }

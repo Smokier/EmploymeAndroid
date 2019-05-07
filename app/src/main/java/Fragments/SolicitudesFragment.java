@@ -47,19 +47,6 @@ public class SolicitudesFragment extends Fragment {
 
         recycler=v.findViewById(R.id.interesadas);
         recycler.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-        /*Call<Empresa>  call = RetrofitClient.getInstance().getApi().getInteresadas(extras.getString("Id"),"Android");
-        call.enqueue(new Callback<Empresa>() {
-            @Override
-            public void onResponse(Call<Empresa> call, Response<Empresa> response) {
-
-                Toast.makeText(getContext(),response.body().getNom_emp(),Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<Empresa> call, Throwable t) {
-
-            }
-        });*/
 
         Call<List<Empresa>> call = RetrofitClient.getInstance().getApi().getInteresadass(extras.getString("Id"),"Android");
 

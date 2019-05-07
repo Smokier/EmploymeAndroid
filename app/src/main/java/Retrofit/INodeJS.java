@@ -53,5 +53,9 @@ public interface INodeJS  {
     @FormUrlEncoded
     Call<List<Empresa>> getInteresadass(@Field("id")String id,@Field("device")String dev);
 
+    @POST("/aspirante/asps")
+    @FormUrlEncoded
+    Call<List<Aspirante>> getAspirantes(@Field("device") String dev);
+
 
 }

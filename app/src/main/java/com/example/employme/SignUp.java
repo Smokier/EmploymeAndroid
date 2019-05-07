@@ -181,7 +181,7 @@ public class SignUp extends AppCompatActivity {
                     try
                     {
                         s = response.body();
-                        if (s.equals("Usuario o email ya registrado"))
+                        if (s.length()==31)
                         {
                             Log.e("Son iguales","Verdadero");
                             Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
@@ -197,7 +197,7 @@ public class SignUp extends AppCompatActivity {
                             //Se envía el correo de bienvenida y como parametro se coloca el correo del usuario
                             sendMail(mail.getText().toString());
                             //Se envia a la vista una notificacion diciendo que el usuario se registro correctamente
-                            Toast.makeText(getApplicationContext(),"Usuario registrado correctamente",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"¡Registrado correctamente!",Toast.LENGTH_SHORT).show();
 
                             //Se crea un intent, para inviar a la siguiente vista y se pueda inicar sesión
                             intent = new Intent(SignUp.this,Login.class);
@@ -255,9 +255,9 @@ public class SignUp extends AppCompatActivity {
 
         if((pass.getText().toString()).equals(confpass.getText().toString())) {
 
-            emp.setNom_emp(nom.getText().toString());
-            emp.setUsu_emp(u.getText().toString());
-            emp.setEmail_emp(mail.getText().toString());
+            emp.setNom_emp(nom.getText().toString().trim());
+            emp.setUsu_emp(u.getText().toString().trim());
+            emp.setEmail_emp(mail.getText().toString().trim());
             emp.setPsw_emp(c.encriptar(pass.getText().toString(),key));
 
             //Se hace la peticion a node js para registrar los datos
@@ -270,10 +270,10 @@ public class SignUp extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
                     s = response.body();
-                    if (s.equals("Usuario o email ya registrado"))
+                    if (s.length()==31)
                     {
                         Log.e("Son iguales","Verdadero");
-                        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Error, el usuario o el correo ya ha sido registrado anteriormente", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
@@ -287,8 +287,7 @@ public class SignUp extends AppCompatActivity {
                         }
                         db.cerrar();
 
-                        Toast.makeText(getApplicationContext(),"Usuario registrado correctamente",Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(getApplicationContext(), "¡Registrado correctamente!", Toast.LENGTH_SHORT).show();
                         intent = new Intent(SignUp.this,Login.class);
                         tipo="Empresa";
                         intent.putExtra("Tipo",tipo);

@@ -173,7 +173,7 @@ public class Login extends AppCompatActivity {
                             editor.putString("contraEmp",emp.getPsw_emp());
                             editor.commit();
                         }
-                        intent = new Intent(Login.this,Menu.class);
+                        intent = new Intent(Login.this,MenuEmpresa.class);
                         intent.putExtra("Nombre",emp.getNom_emp());
                         intent.putExtra("Email",emp.getEmail_emp());
                         intent.putExtra("Pass",emp.getPsw_emp());
