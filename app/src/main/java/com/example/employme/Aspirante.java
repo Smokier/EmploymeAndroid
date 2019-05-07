@@ -19,11 +19,12 @@ public class Aspirante {
 
     }
 
-    public Aspirante(String nom_asp, String email_asp, String fn_asp, String foto_asp) {
+    public Aspirante(String nom_asp, String email_asp, String fn_asp, String foto_asp,String id_asp) {
         this.nom_asp = nom_asp;
         this.email_asp = email_asp;
         this.fn_asp = fn_asp;
         this.foto_asp = foto_asp;
+        this.id_asp=id_asp;
     }
 
 

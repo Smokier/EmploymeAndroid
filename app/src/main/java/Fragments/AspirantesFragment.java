@@ -13,14 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.employme.Aspirante;
-import com.example.employme.Empresa;
 import com.example.employme.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Adapter.AspirantesAdapter;
-import Adapter.InteresadasAdapter;
 import Retrofit.RetrofitClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,7 +49,7 @@ public class AspirantesFragment extends Fragment {
 
                 for (int i = 0; i<em.size();i++)
                 {
-                    asp.add(new Aspirante(em.get(i).getNom_asp(),em.get(i).getEmail_asp(),em.get(i).getFn_asp(),em.get(i).getFoto_asp()));
+                    asp.add(new Aspirante(em.get(i).getNom_asp(),em.get(i).getEmail_asp(),em.get(i).getFn_asp(),em.get(i).getFoto_asp(),em.get(i).getId_asp()));
                 }
 
                 Toast.makeText(getContext(),Integer.toString(asp.size()),Toast.LENGTH_SHORT).show();

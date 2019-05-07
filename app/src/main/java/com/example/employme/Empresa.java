@@ -4,6 +4,7 @@ public class Empresa {
 
     private String nom_emp;
     private String usu_emp;
+    private String id_emp;
     private String email_emp;
     private String psw_emp;
     private String sitio_pemp;
@@ -15,11 +16,12 @@ public class Empresa {
 
     }
 
-    public Empresa(String nom_emp, String usu_emp, String email_emp, String foto_emp) {
+    public Empresa(String nom_emp, String usu_emp, String email_emp, String foto_emp,String id_emp) {
         this.nom_emp = nom_emp;
         this.usu_emp = usu_emp;
         this.email_emp = email_emp;
         this.foto_emp = foto_emp;
+        this.id_emp=id_emp;
     }
 
     public String getNom_emp() {
@@ -76,5 +78,13 @@ public class Empresa {
 
     public void setFoto_emp(String foto_emp) {
         this.foto_emp = foto_emp;
+    }
+
+    public String getId_emp() {
+        return id_emp;
+    }
+
+    public void setId_emp(String id_emp) {
+        this.id_emp = id_emp;
     }
 }
