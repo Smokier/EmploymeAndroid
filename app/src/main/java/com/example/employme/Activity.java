@@ -27,7 +27,6 @@ public class Activity extends AppCompatActivity {
         intent = new Intent(this,Login.class);
         intent.putExtra("Tipo",tipo);
         startActivity(intent);
-        finish();
 
     }
 
@@ -36,6 +35,5 @@ public class Activity extends AppCompatActivity {
         intent = new Intent(this,SignUp.class);
         intent.putExtra("Tipo",tipo);
         startActivity(intent);
-        finish();
     }
 }

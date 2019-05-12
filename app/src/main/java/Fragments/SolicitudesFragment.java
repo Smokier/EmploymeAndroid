@@ -58,10 +58,9 @@ public class SolicitudesFragment extends Fragment {
 
                 for (int i = 0; i<em.size();i++)
                 {
-                    emp.add(new Empresa(em.get(i).getNom_emp(),em.get(i).getEmail_emp(),em.get(i).getUsu_emp(),em.get(i).getFoto_emp(),em.get(i).getId_emp()));
+                    emp.add(new Empresa(em.get(i).getNom_emp(),em.get(i).getUsu_emp(),em.get(i).getEmail_emp(),em.get(i).getFoto_emp(),em.get(i).getId_emp()));
                 }
 
-                Toast.makeText(getContext(),Integer.toString(emp.size()),Toast.LENGTH_SHORT).show();
                 InteresadasAdapter adapter = new InteresadasAdapter(getContext(),emp);
                 recycler.setAdapter(adapter);
             }

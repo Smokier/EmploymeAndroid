@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".Menu">
+    android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".PerfilAspirante">
 
 
     <ImageView
@@ -85,12 +85,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <FrameLayout
-            android:id="@+id/youtube_player_fragment"
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/youtube_player"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"></FrameLayout>
-
-
+            android:layout_height="match_parent"/>
 
     </android.support.v7.widget.CardView>
 
@@ -109,7 +107,6 @@
         app:layout_constraintTop_toBottomOf="@+id/foto_perfil">
 
         <LinearLayout
-            android:id="@+id/datos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -156,47 +153,24 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/pass"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="74dp"
-                    android:layout_height="wrap_content"
-                    android:text="Contraseña" />
-
-                <EditText
-                    android:id="@+id/contra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textPassword"
-                    android:text="hola" />
-
-            </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/cambios"
+        android:id="@+id/interes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_blanco"
-        android:text="Guardar cambios"
+        android:onClick="interes"
+        android:text="Me interesa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.415" />
 
 
 </android.support.constraint.ConstraintLayout>

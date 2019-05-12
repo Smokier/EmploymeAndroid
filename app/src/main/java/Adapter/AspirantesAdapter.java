@@ -2,6 +2,7 @@ package Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +23,7 @@ import java.util.List;
 
 class AspirantesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener
 {
-    TextView nomEmp,emailEmp,tipoEmp;
+    TextView nomEmp,emailEmp,tipoEmp,tipo,e;
 
     ImageView fotoEmp;
     public CardView card;
@@ -37,6 +38,11 @@ class AspirantesViewHolder extends RecyclerView.ViewHolder implements View.OnCli
         emailEmp=itemView.findViewById(R.id.emailEmp);
         tipoEmp=itemView.findViewById(R.id.tipoEmp);
         fotoEmp=itemView.findViewById(R.id.fotoEmp);
+        e=itemView.findViewById(R.id.Emps);
+        tipo=itemView.findViewById(R.id.Asps);
+        e.setVisibility(View.INVISIBLE);
+
+
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener)
@@ -63,6 +69,7 @@ public class AspirantesAdapter extends RecyclerView.Adapter<AspirantesViewHolder
     Context context;
     Intent intent;
 
+
     public AspirantesAdapter (Context context, List<Aspirante> asps)
     {
         this.context=context;
@@ -79,6 +86,7 @@ public class AspirantesAdapter extends RecyclerView.Adapter<AspirantesViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull AspirantesViewHolder viewHolder, final int i) {
+
         viewHolder.nomEmp.setText(asps.get(i).getNom_asp());
         viewHolder.emailEmp.setText(asps.get(i).getEmail_asp());
         viewHolder.tipoEmp.setText(asps.get(i).getFn_asp() +" Años");
@@ -88,12 +96,23 @@ public class AspirantesAdapter extends RecyclerView.Adapter<AspirantesViewHolder
             public void onClick(View view, int position, boolean isLongClick) {
                 if(isLongClick)
                 {
-                    Toast.makeText(context,"Long Click "+asps.get(i).getId_asp(),Toast.LENGTH_LONG).show();
+
                     intent = new Intent(context,PerfilAspirante.class);
+                    intent.putExtra("Nombre",asps.get(i).getNom_asp());
+                    intent.putExtra("Email",asps.get(i).getEmail_asp());
+                    intent.putExtra("Foto",asps.get(i).getFoto_asp());
+                    intent.putExtra("Video",asps.get(i).getVyt_pasp());
+                    context.startActivity(intent);
                 }
                 else
                 {
-                    Toast.makeText(context,"Short click "+asps.get(i).getId_asp(),Toast.LENGTH_LONG).show();
+                    intent = new Intent(context,PerfilAspirante.class);
+                    intent.putExtra("Nombre",asps.get(i).getNom_asp());
+                    intent.putExtra("Email",asps.get(i).getEmail_asp());
+                    intent.putExtra("Foto",asps.get(i).getFoto_asp());
+                    intent.putExtra("Id",asps.get(i).getId_asp());
+                    intent.putExtra("Video",asps.get(i).getVyt_pasp());
+                    context.startActivity(intent);
                 }
             }
         });

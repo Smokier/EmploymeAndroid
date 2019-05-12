@@ -8,6 +8,7 @@ public class Aspirante {
     private String psw_asp;
     private String fn_asp;
     private String usu_asp;
+    private String usugh_pasp;
     private String sex_asp;
     private String numtel_asp;
     private String foto_asp;
@@ -19,12 +20,13 @@ public class Aspirante {
 
     }
 
-    public Aspirante(String nom_asp, String email_asp, String fn_asp, String foto_asp,String id_asp) {
+    public Aspirante(String nom_asp, String email_asp, String fn_asp, String foto_asp,String id_asp, String vyt_pasp) {
         this.nom_asp = nom_asp;
         this.email_asp = email_asp;
         this.fn_asp = fn_asp;
         this.foto_asp = foto_asp;
         this.id_asp=id_asp;
+        this.vyt_pasp=vyt_pasp;
     }
 
 
@@ -38,6 +40,14 @@ public class Aspirante {
 
     public void setNom_asp(String nom_asp) {
         this.nom_asp = nom_asp;
+    }
+
+    public String getUsugh_pasp() {
+        return usugh_pasp;
+    }
+
+    public void setUsugh_pasp(String usugh_pasp) {
+        this.usugh_pasp = usugh_pasp;
     }
 
     public String getEmail_asp() {

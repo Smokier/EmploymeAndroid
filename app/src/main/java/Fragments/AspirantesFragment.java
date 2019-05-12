@@ -38,7 +38,8 @@ public class AspirantesFragment extends Fragment {
         recycler=v.findViewById(R.id.interesadas);
         recycler.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
 
-        tipo=extras.getString("Tipo");
+        tipo=extras.getString("Id_Emp");
+        Toast.makeText(getContext(),tipo,Toast.LENGTH_SHORT).show();
         Call<List<Aspirante>> call = RetrofitClient.getInstance().getApi().getAspirantes("Android");
 
         call.enqueue(new Callback<List<Aspirante>>() {
@@ -49,10 +50,8 @@ public class AspirantesFragment extends Fragment {
 
                 for (int i = 0; i<em.size();i++)
                 {
-                    asp.add(new Aspirante(em.get(i).getNom_asp(),em.get(i).getEmail_asp(),em.get(i).getFn_asp(),em.get(i).getFoto_asp(),em.get(i).getId_asp()));
+                    asp.add(new Aspirante(em.get(i).getNom_asp(),em.get(i).getEmail_asp(),em.get(i).getFn_asp(),em.get(i).getFoto_asp(),em.get(i).getId_asp(),em.get(i).getVyt_pasp()));
                 }
-
-                Toast.makeText(getContext(),Integer.toString(asp.size()),Toast.LENGTH_SHORT).show();
                 AspirantesAdapter adapter = new AspirantesAdapter(getContext(),asp);
                 recycler.setAdapter(adapter);
             }

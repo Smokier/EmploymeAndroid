@@ -120,7 +120,8 @@ public class Login extends AppCompatActivity {
                             editor.commit();
                         }
                         intent = new Intent(Login.this,Menu.class);
-                        intent.putExtra("Tipo",tipo);
+                        intent.putExtra("UserGit",asp.getUsugh_pasp());
+                        intent.putExtra("Video",asp.getVyt_pasp());
                         intent.putExtra("Id",asp.getId_asp());
                         intent.putExtra("Nombre",asp.getNom_asp());
                         intent.putExtra("Email",asp.getEmail_asp());
@@ -128,6 +129,12 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("Pass",asp.getPsw_asp());
                         intent.putExtra("Foto",asp.getFoto_asp());
                         intent.putExtra("Tipo",tipo);
+
+                        if(asp.getVyt_pasp()==null)
+                        {
+
+                            Toast.makeText(getApplicationContext(),"Cierto",Toast.LENGTH_SHORT).show();
+                        }
                         startActivity(intent);
                         finish();
                     }
@@ -171,14 +178,18 @@ public class Login extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("usuarioEmp", emp.getUsu_emp());
                             editor.putString("contraEmp",emp.getPsw_emp());
+                            editor.putString("IdEmp",emp.getId_emp());
                             editor.commit();
                         }
                         intent = new Intent(Login.this,MenuEmpresa.class);
+                        intent.putExtra("Id_Emp",emp.getId_emp());
                         intent.putExtra("Nombre",emp.getNom_emp());
                         intent.putExtra("Email",emp.getEmail_emp());
                         intent.putExtra("Pass",emp.getPsw_emp());
                         intent.putExtra("Username",emp.getUsu_emp());
                         intent.putExtra("Tipo",tipo);
+
+                        Toast.makeText(getApplicationContext(),emp.getId_emp(),Toast.LENGTH_LONG).show();
                         startActivity(intent);
                         finish();
                     }

@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.employme.Empresa;
+import com.example.employme.PerfilAspirante;
+import com.example.employme.PerfilEmpresa;
 import com.example.employme.R;
 import com.squareup.picasso.Picasso;
 
@@ -19,21 +22,23 @@ import java.util.List;
 
 class EmpresasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener
 {
-    TextView nomEmp,emailEmp,tipoEmp,idUser;
+    TextView nomEmp,emailEmp,tipoEmp,tipo,e;
     ImageView fotoEmp;
     public CardView card;
     private ItemClickListener itemClickListener;
-
+    Intent intent;
     public EmpresasViewHolder(@NonNull View itemView) {
         super(itemView);
         card = itemView.findViewById(R.id.card);
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);
         nomEmp=itemView.findViewById(R.id.nomEmp);
-
         emailEmp=itemView.findViewById(R.id.emailEmp);
         tipoEmp=itemView.findViewById(R.id.tipoEmp);
         fotoEmp=itemView.findViewById(R.id.fotoEmp);
+        tipo=itemView.findViewById(R.id.Asps);
+        e=itemView.findViewById(R.id.Emps);
+        tipo.setVisibility(View.INVISIBLE);
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener)
@@ -60,6 +65,7 @@ public class InteresadasAdapter extends RecyclerView.Adapter<EmpresasViewHolder>
     public List<Empresa> emps;
     Context context;
 
+
     public InteresadasAdapter (Context context, List<Empresa> emps)
     {
         this.context=context;
@@ -78,19 +84,17 @@ public class InteresadasAdapter extends RecyclerView.Adapter<EmpresasViewHolder>
     @Override
     public void onBindViewHolder(@NonNull EmpresasViewHolder viewHolder, final int i) {
         viewHolder.nomEmp.setText(emps.get(i).getNom_emp());
-        viewHolder.emailEmp.setText(emps.get(i).getNom_emp());
+        viewHolder.emailEmp.setText(emps.get(i).getEmail_emp());
         Picasso.with(context.getApplicationContext()).load("http://3.93.218.234/"+emps.get(i).getFoto_emp()).error(R.drawable.person_icon).into(viewHolder.fotoEmp);
         viewHolder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
-                if(isLongClick)
-                {
-                    Toast.makeText(context,"Long Click "+emps.get(i).getId_emp(),Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    Toast.makeText(context,"Short click "+emps.get(i).getId_emp(),Toast.LENGTH_LONG).show();
-                }
+                Intent intent;
+                intent = new Intent(context,PerfilEmpresa.class);
+                intent.putExtra("Nombre",emps.get(i).getNom_emp());
+                intent.putExtra("Email",emps.get(i).getEmail_emp());
+                intent.putExtra("Foto",emps.get(i).getFoto_emp());
+                context.startActivity(intent);
             }
         });
     }

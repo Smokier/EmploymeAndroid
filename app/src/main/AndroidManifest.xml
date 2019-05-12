@@ -49,6 +49,15 @@
 
         <activity android:name=".MenuEmpresa">
 
+        <!-- The meta-data tag is required if you support API level 15 and lower -->
+    </activity>
+
+        <activity android:name=".PerfilAspirante">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+        </activity>
+        <activity android:name=".PerfilEmpresa">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
         </activity>
 
