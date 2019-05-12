@@ -17,6 +17,8 @@ import retrofit2.http.PUT;
 
 public interface INodeJS  {
 
+    //Aquí es donde se configuran las peticiones hacia el servidor web, el cual regresa o no datos, depende el tipo de petición.
+
     @POST("/regasp")
     @FormUrlEncoded
     Call<String>registerAsp(@Field("nombre") String nombre,@Field("usuario")String usuario,@Field("password") String password,@Field("confpass") String confpass,
@@ -52,6 +54,11 @@ public interface INodeJS  {
     @POST("/aspirante/asps")
     @FormUrlEncoded
     Call<List<Aspirante>> getAspirantes(@Field("device") String dev);
+
+    @POST("/update")
+    @FormUrlEncoded
+    Call<String> updateAsp(@Field("correo") String c,@Field("device") String dev,@Field("id") String id);
+
 
 
 }

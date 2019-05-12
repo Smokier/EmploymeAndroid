@@ -50,9 +50,9 @@ public class PerfilFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.fragment_perfil,container,false);
 
-        final String [] data = null;
         intent = getActivity().getIntent();
         extras=intent.getExtras();
 
@@ -224,10 +224,41 @@ else
 
     public void edit()
     {
-        name.setEnabled(true);
         email.setEnabled(true);
         pass.setEnabled(true);
         cambio.setVisibility(View.VISIBLE);
+
+        cambio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(email.getText().toString().equals(extras.getString("Email")))
+                {
+                    Toast.makeText(getContext(),"No modificaste ningun dato",Toast.LENGTH_SHORT).show();
+                    cambio.setVisibility(View.INVISIBLE);
+                    email.setEnabled(false);
+                    pass.setEnabled(false);
+                }
+                else
+                {
+
+                    Call<String> call = RetrofitClient.getInstance().getApi().updateAsp(email.getText().toString(),"Android",extras.getString("Id"));
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            intent = getActivity().getIntent();
+                            intent.putExtra("Email",email.getText().toString());
+                            getActivity().finish();
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+
+                        }
+                    });
+                }
+            }
+        });
     }
 
 

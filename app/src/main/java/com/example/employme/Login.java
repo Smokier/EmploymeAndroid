@@ -146,7 +146,7 @@ public class Login extends AppCompatActivity {
                 }
             });
         }
-        catch (SQLException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -181,6 +181,11 @@ public class Login extends AppCompatActivity {
                             editor.putString("IdEmp",emp.getId_emp());
                             editor.commit();
                         }
+                        SharedPreferences preferences = getSharedPreferences("sessionEmp", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("IdEmp",emp.getId_emp());
+                        editor.commit();
+
                         intent = new Intent(Login.this,MenuEmpresa.class);
                         intent.putExtra("Id_Emp",emp.getId_emp());
                         intent.putExtra("Nombre",emp.getNom_emp());

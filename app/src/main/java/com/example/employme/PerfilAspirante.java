@@ -74,7 +74,6 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
 
         repositories();
         player.initialize(claveYT,this);
-        Toast.makeText(getApplicationContext(),extras.getString("Id_Emp"),Toast.LENGTH_LONG).show();
 
     }
 
