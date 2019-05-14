@@ -29,18 +29,17 @@ public class UploadPhoto extends AsyncTask<Void,Void,Void> {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
         String encodedImage = Base64.encodeToString(byteArrayOutputStream.toByteArray(),Base64.DEFAULT);
-
         Call<String> call = RetrofitClient.getInstance().getApi().uploadPhoto(encodedImage,"Android",id);
 
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Toast.makeText(context.getApplicationContext(),response.body(),Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(context.getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
+
             }
         });
 

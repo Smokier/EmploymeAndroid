@@ -82,9 +82,9 @@ public class Menu extends AppCompatActivity {
             Uri path = data.getData();
             imageView.setImageURI(path);
 
-            Toast.makeText(getApplicationContext(),extras.getString("Nombre"),Toast.LENGTH_SHORT).show();
             Bitmap image=((BitmapDrawable)imageView.getDrawable()).getBitmap();
-            photo= new UploadPhoto(image,getApplicationContext(),extras.getString("Id"));
+            new UploadPhoto(image,getApplicationContext(),extras.getString("Id")).execute();
+
 
 
         }
