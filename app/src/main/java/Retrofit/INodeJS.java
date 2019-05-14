@@ -59,6 +59,8 @@ public interface INodeJS  {
     @FormUrlEncoded
     Call<String> updateAsp(@Field("correo") String c,@Field("device") String dev,@Field("id") String id);
 
-
+    @POST("/uploadPhoto")
+    @FormUrlEncoded
+    Call<String> uploadPhoto(@Field("Foto") String data,@Field("device")String dev,@Field("Id") String id);
 
 }
