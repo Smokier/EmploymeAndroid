@@ -1,19 +1,19 @@
 package Retrofit;
 
-import android.provider.CallLog;
-
 import com.example.employme.Aspirante;
 import com.example.employme.Empresa;
 import com.example.employme.Github;
 
 import java.util.List;
-
-import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 
 public interface INodeJS  {
 
@@ -59,8 +59,9 @@ public interface INodeJS  {
     @FormUrlEncoded
     Call<String> updateAsp(@Field("correo") String c,@Field("device") String dev,@Field("id") String id);
 
+    @Multipart
     @POST("fotoasp/uploadPhoto")
-    @FormUrlEncoded
-    Call<String> uploadPhoto(@Field("Foto") String data,@Field("device")String dev,@Field("Id") String id);
+    Call <String> uploadPhoto(@Part MultipartBody.Part photo,@Part ("Id") RequestBody userId);
+
 
 }

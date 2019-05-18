@@ -1,6 +1,7 @@
 package com.example.employme;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -10,23 +11,37 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import Retrofit.RetrofitClient;
+import retrofit2.Call;
+
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.net.URL;
+
 import Fragments.ConfiguracionFragment;
 import Fragments.PerfilFragment;
 import Fragments.SolicitudesFragment;
-import Photo.UploadPhoto;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Menu extends AppCompatActivity {
 
     ImageView imageView;
-    UploadPhoto photo;
     Intent intent;
     Bundle extras;
 
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
@@ -79,15 +94,48 @@ public class Menu extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==RESULT_OK){
 
-            Uri path = data.getData();
-            imageView.setImageURI(path);
-
-            Bitmap image=((BitmapDrawable)imageView.getDrawable()).getBitmap();
-            new UploadPhoto(image,getApplicationContext(),extras.getString("Id")).execute();
-
+            Uri imgUri =  data.getData();
+            getPath(imgUri);
 
 
         }
+    }
+
+    public void getPath(Uri uri) {
+
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        startManagingCursor(cursor);
+        int column_index = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+
+        Toast.makeText(this, cursor.getString(column_index), Toast.LENGTH_SHORT).show();
+        File file = new File(cursor.getString(column_index));
+
+        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"),extras.getString("Id"));
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"),file);
+        MultipartBody.Part requestImage;
+
+        requestImage = MultipartBody.Part.createFormData("file",file.getName(),requestFile);
+
+        Call<String> call = RetrofitClient.getInstance().getApi().uploadPhoto(requestImage,description);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(getApplicationContext(),"Imagen Actualizada",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(Menu.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
     }
 
 
