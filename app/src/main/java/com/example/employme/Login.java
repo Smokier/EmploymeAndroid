@@ -198,6 +198,7 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("Email",emp.getEmail_emp());
                         intent.putExtra("Pass",emp.getPsw_emp());
                         intent.putExtra("Username",emp.getUsu_emp());
+                        intent.putExtra("Foto",emp.getFoto_emp());
                         intent.putExtra("Tipo",tipo);
 
                         Toast.makeText(getApplicationContext(),emp.getId_emp(),Toast.LENGTH_LONG).show();

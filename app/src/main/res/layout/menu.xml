@@ -26,14 +26,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/menu_navegacion"
-        />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="0dp" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/menu_navegacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
+        android:layout_marginStart="0dp"
         android:background="#163044"
         app:itemIconTint="@color/Blanco"
         app:itemTextColor="@color/Blanco"

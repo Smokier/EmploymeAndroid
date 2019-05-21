@@ -57,6 +57,8 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
         correo = extras.getString("Email");
         foto = extras.getString("Foto");
 
+        getInteres();
+
         pic = findViewById(R.id.foto_perfil);
         nom = findViewById(R.id.name);
         c = findViewById(R.id.mail);
@@ -77,26 +79,17 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
         repositories();
         if(extras.getString("Video")!= null)
         {
-            Toast.makeText(this, extras.getString("Video"), Toast.LENGTH_SHORT).show();
             player.initialize(claveYT,this);
         }
-        getInteres();
+        else
+        {
+            Toast.makeText(this, "El aspirante "+nombre+" no ha enlazado un video de presentación", Toast.LENGTH_SHORT).show();
+        }
+
 
 
     }
 
-    public String [] datos (){
-
-        SharedPreferences data = getSharedPreferences("sessionEmp",Context.MODE_PRIVATE);
-        String user=data.getString("IdEmp","No existe la info");
-        String nameEmp = data.getString("NomEmp","No existe la info");
-        Toast.makeText(getApplicationContext(),"Id emp:"+user+" id asp: "+extras.getString("Id"),Toast.LENGTH_LONG).show();
-
-        String d [] = null;
-        d[0] = user;
-        d[1]= nameEmp;
-        return d;
-    }
 
     public void getInteres()
     {
@@ -109,10 +102,11 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
         in.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Toast.makeText(PerfilAspirante.this, response.body(), Toast.LENGTH_SHORT).show();
+
                 if(response.body().equals("true"))
                 {
                     i.setVisibility(View.INVISIBLE);
+                    Toast.makeText(PerfilAspirante.this, "Ya te haz interesado en este aspirante", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -181,7 +175,6 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
         SharedPreferences data = getSharedPreferences("sessionEmp",Context.MODE_PRIVATE);
         String user=data.getString("IdEmp","No existe la info");
         String nameEmp = data.getString("NomEmp","No existe la info");
-        Toast.makeText(getApplicationContext(),"Id emp:"+user+" id asp: "+extras.getString("Id"),Toast.LENGTH_LONG).show();
 
         Call <String> call = RetrofitClient.getInstance().getApi().interes(user,nameEmp,extras.getString("Id"),correo,"Android");
         call.enqueue(new Callback<String>() {
