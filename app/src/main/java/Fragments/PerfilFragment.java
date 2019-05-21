@@ -162,7 +162,7 @@ else
             @Override
             public void onResponse(Call<Aspirante> call, Response<Aspirante> response) {
 
-                Picasso.with(getContext()).load("http://3.93.218.234/"+response.body().getFoto_asp()).into(imageView);
+                Picasso.with(getContext()).load("http://34.227.162.181/"+response.body().getFoto_asp()).into(imageView);
             }
 
             @Override

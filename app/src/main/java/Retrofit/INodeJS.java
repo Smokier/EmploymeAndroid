@@ -61,7 +61,7 @@ public interface INodeJS  {
 
     @Multipart
     @POST("fotoasp/uploadPhoto")
-    Call <String> uploadPhoto(@Part MultipartBody.Part photo,@Part ("Id") RequestBody userId);
+    Call <String> uploadPhoto(@Part MultipartBody.Part photo,@Part ("Id") RequestBody  userId);
 
 
 }

@@ -108,8 +108,6 @@ public class Menu extends AppCompatActivity {
         startManagingCursor(cursor);
         int column_index = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
-
-        Toast.makeText(this, cursor.getString(column_index), Toast.LENGTH_SHORT).show();
         File file = new File(cursor.getString(column_index));
 
         RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"),extras.getString("Id"));
@@ -123,7 +121,9 @@ public class Menu extends AppCompatActivity {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Toast.makeText(getApplicationContext(),"Imagen Actualizada",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Foto Actualizada",Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(getIntent());
             }
 
             @Override
