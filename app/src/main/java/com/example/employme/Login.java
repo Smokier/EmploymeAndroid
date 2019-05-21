@@ -108,6 +108,9 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Aspirante> call, Response<Aspirante> response) {
                     asp = response.body();
+                    if(username.getText().toString().isEmpty() || pass.getText().toString().isEmpty() ){
+                        Toast.makeText(getApplicationContext(),"Llene todos los campos",Toast.LENGTH_SHORT).show();
+                    }else{
 
                     if(asp.getEmail_asp().equals(username.getText().toString()) || asp.getUsu_asp().equals(username.getText().toString()))
                     {
@@ -137,7 +140,7 @@ public class Login extends AppCompatActivity {
                         }
                         startActivity(intent);
                         finish();
-                    }
+                    }}
                 }
 
                 @Override
@@ -170,6 +173,9 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Empresa> call, Response<Empresa> response) {
                     emp =response.body();
+                    if(username.getText().toString().isEmpty() || pass.getText().toString().isEmpty() ){
+                        Toast.makeText(getApplicationContext(),"Llene todos los campos",Toast.LENGTH_SHORT).show();
+                    }else{
                     if(emp.getEmail_emp().equals(username.getText().toString()) || emp.getUsu_emp().equals(username.getText().toString()))
                     {
                         if(isActive==true)
@@ -178,12 +184,12 @@ public class Login extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("usuarioEmp", emp.getUsu_emp());
                             editor.putString("contraEmp",emp.getPsw_emp());
-                            editor.putString("IdEmp",emp.getId_emp());
                             editor.commit();
                         }
                         SharedPreferences preferences = getSharedPreferences("sessionEmp", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("IdEmp",emp.getId_emp());
+                        editor.putString("NomEmp",emp.getNom_emp());
                         editor.commit();
 
                         intent = new Intent(Login.this,MenuEmpresa.class);
@@ -197,7 +203,7 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),emp.getId_emp(),Toast.LENGTH_LONG).show();
                         startActivity(intent);
                         finish();
-                    }
+                    }}
                 }
 
                 @Override

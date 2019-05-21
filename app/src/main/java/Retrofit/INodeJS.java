@@ -61,7 +61,14 @@ public interface INodeJS  {
 
     @Multipart
     @POST("fotoasp/uploadPhoto")
-    Call <String> uploadPhoto(@Part MultipartBody.Part photo,@Part ("Id") RequestBody userId);
+    Call <String> uploadPhoto(@Part MultipartBody.Part photo,@Part ("Id") RequestBody  userId);
 
 
+    @POST("/aspirantes/interesAndroid")
+    @FormUrlEncoded
+    Call<String> interes(@Field("idEmp") String idE,@Field("NameEmp") String name, @Field("idAsp") String idA, @Field("emailAsp") String emailAsp, @Field("device") String dev);
+
+    @POST("/aspirantes/knowAndroid")
+    @FormUrlEncoded
+    Call<String> getInteres(@Field("idEmp") String idE, @Field("idAsp") String idA, @Field("device") String dv);
 }

@@ -43,6 +43,7 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
     LinearLayout p;
     ListView listView;
     YouTubePlayerView player;
+    Button i;
     String claveYT="AIzaSyCAzlL92LzYUtlSO7cyEyo-dxAsStKZlEw";
 
 
@@ -63,6 +64,7 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
         nameGit=findViewById(R.id.name_git);
         listView=findViewById(R.id.lista);
         player= findViewById(R.id.youtube_player);
+        i = findViewById(R.id.interes);
 
 
 
@@ -70,11 +72,52 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
         nom.setText(nombre);
         nom.setEnabled(false);
         c.setEnabled(false);
-        Picasso.with(getApplicationContext()).load("http://3.93.218.234/" + foto).error(R.drawable.person_icon).into(pic);
+        Picasso.with(getApplicationContext()).load("http://34.227.162.181/" + foto).error(R.drawable.person_icon).into(pic);
 
         repositories();
-        player.initialize(claveYT,this);
+        if(extras.getString("Video")!= null)
+        {
+            Toast.makeText(this, extras.getString("Video"), Toast.LENGTH_SHORT).show();
+            player.initialize(claveYT,this);
+        }
+        getInteres();
 
+
+    }
+
+    public String [] datos (){
+
+        SharedPreferences data = getSharedPreferences("sessionEmp",Context.MODE_PRIVATE);
+        String user=data.getString("IdEmp","No existe la info");
+        String nameEmp = data.getString("NomEmp","No existe la info");
+        Toast.makeText(getApplicationContext(),"Id emp:"+user+" id asp: "+extras.getString("Id"),Toast.LENGTH_LONG).show();
+
+        String d [] = null;
+        d[0] = user;
+        d[1]= nameEmp;
+        return d;
+    }
+
+    public void getInteres()
+    {
+        String [] data = datos ();
+        Call<String> in = RetrofitClient.getInstance().getApi().getInteres(data[0],extras.getString("Id"),"Android");
+
+        in.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(PerfilAspirante.this, response.body(), Toast.LENGTH_SHORT).show();
+                if(response.body().equals("true"))
+                {
+                    i.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
     }
 
     public void repositories()
@@ -103,7 +146,7 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
 
             @Override
             public void onFailure(Call<List<Github>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Cuenta de github no enlazada",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -132,10 +175,24 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
 
     public void interes(View view) {
 
-        SharedPreferences data = getSharedPreferences("sessionEmp",Context.MODE_PRIVATE);
-        final String user=data.getString("IdEmp","No existe la info");
-        Toast.makeText(getApplicationContext(),user,Toast.LENGTH_LONG).show();
+    String data [] = datos();
 
+        Call <String> call = RetrofitClient.getInstance().getApi().interes(data[0],data[1],extras.getString("Id"),correo,"Android");
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(getApplicationContext(),response.body(),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+
+        i.setVisibility(View.INVISIBLE);
 
     }
+
+
 }

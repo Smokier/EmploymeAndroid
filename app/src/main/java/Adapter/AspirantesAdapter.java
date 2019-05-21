@@ -24,7 +24,6 @@ import java.util.List;
 class AspirantesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener
 {
     TextView nomEmp,emailEmp,tipoEmp,tipo,e;
-
     ImageView fotoEmp;
     public CardView card;
     private ItemClickListener itemClickListener;
@@ -69,6 +68,9 @@ public class AspirantesAdapter extends RecyclerView.Adapter<AspirantesViewHolder
     Context context;
     Intent intent;
 
+    // private static final String Base_URL="http://3.93.218.234/";
+    private static final String Base_URL="http://34.227.162.181/";
+
 
     public AspirantesAdapter (Context context, List<Aspirante> asps)
     {
@@ -90,7 +92,7 @@ public class AspirantesAdapter extends RecyclerView.Adapter<AspirantesViewHolder
         viewHolder.nomEmp.setText(asps.get(i).getNom_asp());
         viewHolder.emailEmp.setText(asps.get(i).getEmail_asp());
         viewHolder.tipoEmp.setText(asps.get(i).getFn_asp() +" Años");
-        Picasso.with(context.getApplicationContext()).load("http://3.93.218.234/"+asps.get(i).getFoto_asp()).error(R.drawable.person_icon).into(viewHolder.fotoEmp);
+        Picasso.with(context.getApplicationContext()).load(Base_URL+asps.get(i).getFoto_asp()).error(R.drawable.person_icon).into(viewHolder.fotoEmp);
         viewHolder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
