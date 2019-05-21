@@ -100,8 +100,11 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
 
     public void getInteres()
     {
-        String [] data = datos ();
-        Call<String> in = RetrofitClient.getInstance().getApi().getInteres(data[0],extras.getString("Id"),"Android");
+        SharedPreferences data = getSharedPreferences("sessionEmp",Context.MODE_PRIVATE);
+        String user=data.getString("IdEmp","No existe la info");
+        String nameEmp = data.getString("NomEmp","No existe la info");
+
+        Call<String> in = RetrofitClient.getInstance().getApi().getInteres(user,extras.getString("Id"),"Android");
 
         in.enqueue(new Callback<String>() {
             @Override
@@ -175,9 +178,12 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
 
     public void interes(View view) {
 
-    String data [] = datos();
+        SharedPreferences data = getSharedPreferences("sessionEmp",Context.MODE_PRIVATE);
+        String user=data.getString("IdEmp","No existe la info");
+        String nameEmp = data.getString("NomEmp","No existe la info");
+        Toast.makeText(getApplicationContext(),"Id emp:"+user+" id asp: "+extras.getString("Id"),Toast.LENGTH_LONG).show();
 
-        Call <String> call = RetrofitClient.getInstance().getApi().interes(data[0],data[1],extras.getString("Id"),correo,"Android");
+        Call <String> call = RetrofitClient.getInstance().getApi().interes(user,nameEmp,extras.getString("Id"),correo,"Android");
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
