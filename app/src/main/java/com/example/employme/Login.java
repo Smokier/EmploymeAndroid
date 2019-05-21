@@ -178,12 +178,12 @@ public class Login extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("usuarioEmp", emp.getUsu_emp());
                             editor.putString("contraEmp",emp.getPsw_emp());
-                            editor.putString("IdEmp",emp.getId_emp());
                             editor.commit();
                         }
                         SharedPreferences preferences = getSharedPreferences("sessionEmp", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("IdEmp",emp.getId_emp());
+                        editor.putString("NomEmp",emp.getNom_emp());
                         editor.commit();
 
                         intent = new Intent(Login.this,MenuEmpresa.class);
