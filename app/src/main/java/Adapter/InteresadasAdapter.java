@@ -65,6 +65,9 @@ public class InteresadasAdapter extends RecyclerView.Adapter<EmpresasViewHolder>
     public List<Empresa> emps;
     Context context;
 
+    /*private static final String Base_URL="http://3.93.218.234/";*/
+    private static final String Base_URL="http://34.227.162.181/";
+
 
     public InteresadasAdapter (Context context, List<Empresa> emps)
     {
@@ -85,7 +88,7 @@ public class InteresadasAdapter extends RecyclerView.Adapter<EmpresasViewHolder>
     public void onBindViewHolder(@NonNull EmpresasViewHolder viewHolder, final int i) {
         viewHolder.nomEmp.setText(emps.get(i).getNom_emp());
         viewHolder.emailEmp.setText(emps.get(i).getEmail_emp());
-        Picasso.with(context.getApplicationContext()).load("http://34.227.162.181/"+emps.get(i).getFoto_emp()).error(R.drawable.person_icon).into(viewHolder.fotoEmp);
+        Picasso.with(context.getApplicationContext()).load(Base_URL+emps.get(i).getFoto_emp()).error(R.drawable.person_icon).into(viewHolder.fotoEmp);
         viewHolder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {

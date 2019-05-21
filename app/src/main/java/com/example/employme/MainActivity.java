@@ -3,6 +3,8 @@ package com.example.employme;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,15 +19,19 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn1,btn2;
+    Button loginA,loginE;
     Intent intent;
     String tipo=null;
-Aspirante asp;
-Empresa emp;
+    Aspirante asp;
+    Empresa emp;
+    boolean tipoConexion1 = false;
+    boolean tipoConexion2 = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seleccion);
+        internetConnection();
     }
 
 
@@ -127,4 +133,46 @@ Empresa emp;
         }
 
     }
+
+public void internetConnection()
+{
+    ConnectivityManager cm;
+    NetworkInfo ni;
+    cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+    ni = cm.getActiveNetworkInfo();
+
+
+    if (ni != null) {
+
+        ConnectivityManager connManager1 = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager1.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        ConnectivityManager connManager2 = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mMobile = connManager2.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if (mWifi.isConnected()) {
+
+            //Wifi
+            tipoConexion1 = true;
+        }
+        if (mMobile.isConnected()) {
+
+            //Datos
+            tipoConexion2 = true;
+        }
+
+        if (tipoConexion1 == true || tipoConexion2 == true) {
+        }
+    }
+    else {
+        Toast.makeText(this, "No tienes conexión a internet", Toast.LENGTH_LONG).show();
+        loginA = findViewById(R.id.loginAsp);
+        loginE = findViewById(R.id.loginEmp);
+
+        loginA.setEnabled(false);
+        loginE.setEnabled(false);
+
+    }
+}
+
 }
