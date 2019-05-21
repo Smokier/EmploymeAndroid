@@ -154,6 +154,9 @@ public class SignUp extends AppCompatActivity {
 
 
         //Si las contraseñas coinciden se prosigue a asignar los datos
+        if(nom.getText().toString().isEmpty() || u.getText().toString().isEmpty() || mail.getText().toString().isEmpty() || pass.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),"Llene todos los campos",Toast.LENGTH_SHORT).show();
+        }else{
         if((pass.getText().toString()).equals(confpass.getText().toString()))
         {
             //Se asignan los atributos con los datos obtenidos de la vista
@@ -229,7 +232,7 @@ public class SignUp extends AppCompatActivity {
         else
         {
             Toast.makeText(getApplicationContext(),"Las contraseñas no coinciden",Toast.LENGTH_SHORT).show();
-        }
+        }}
 
     }
 
@@ -253,6 +256,9 @@ public class SignUp extends AppCompatActivity {
             editor.putString("claveEmp", encodedKey);
             editor.commit();
 
+        if(nom.getText().toString().isEmpty() || u.getText().toString().isEmpty() || mail.getText().toString().isEmpty() || pass.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),"Llene todos los campos",Toast.LENGTH_SHORT).show();
+        }else{
         if((pass.getText().toString()).equals(confpass.getText().toString())) {
 
             emp.setNom_emp(nom.getText().toString().trim());
@@ -270,6 +276,7 @@ public class SignUp extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
                     s = response.body();
+
                     if (s.length()==31)
                     {
                         Log.e("Son iguales","Verdadero");
@@ -306,7 +313,7 @@ public class SignUp extends AppCompatActivity {
         else
         {
             Toast.makeText(getApplicationContext(),"Las contraseñas no coinciden",Toast.LENGTH_SHORT).show();
-        }
+        }}
     }
 
     public void sendMail(String cor)
