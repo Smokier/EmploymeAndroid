@@ -94,6 +94,9 @@ public class Login extends AppCompatActivity {
 
         username=findViewById(R.id.user);
         pass=findViewById(R.id.psw);
+        if(username.getText().toString().isEmpty() || pass.getText().toString().isEmpty() ){
+            Toast.makeText(getApplicationContext(),"Llene todos los campos",Toast.LENGTH_SHORT).show();
+        }else{
 
 
         try {
@@ -108,9 +111,7 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Aspirante> call, Response<Aspirante> response) {
                     asp = response.body();
-                    if(username.getText().toString().isEmpty() || pass.getText().toString().isEmpty() ){
-                        Toast.makeText(getApplicationContext(),"Llene todos los campos",Toast.LENGTH_SHORT).show();
-                    }else{
+
 
                     if(asp.getEmail_asp().equals(username.getText().toString()) || asp.getUsu_asp().equals(username.getText().toString()))
                     {
@@ -140,7 +141,7 @@ public class Login extends AppCompatActivity {
                         }
                         startActivity(intent);
                         finish();
-                    }}
+                    }
                 }
 
                 @Override
@@ -152,7 +153,7 @@ public class Login extends AppCompatActivity {
         catch (Exception e)
         {
             e.printStackTrace();
-        }
+        }}
 
     }
 
@@ -160,6 +161,9 @@ public class Login extends AppCompatActivity {
 
         username=findViewById(R.id.userCompany);
         pass=findViewById(R.id.passCompany);
+        if(username.getText().toString().isEmpty() || pass.getText().toString().isEmpty() ){
+            Toast.makeText(getApplicationContext(),"Llene todos los campos",Toast.LENGTH_SHORT).show();
+        }else{
         try {
 
         //Se realiza la petición al servidor para obtener los datos si es que el usuario ya está registrado
@@ -173,9 +177,7 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Empresa> call, Response<Empresa> response) {
                     emp =response.body();
-                    if(username.getText().toString().isEmpty() || pass.getText().toString().isEmpty() ){
-                        Toast.makeText(getApplicationContext(),"Llene todos los campos",Toast.LENGTH_SHORT).show();
-                    }else{
+
                     if(emp.getEmail_emp().equals(username.getText().toString()) || emp.getUsu_emp().equals(username.getText().toString()))
                     {
                         if(isActive==true)
@@ -204,7 +206,7 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),emp.getId_emp(),Toast.LENGTH_LONG).show();
                         startActivity(intent);
                         finish();
-                    }}
+                    }
                 }
 
                 @Override
@@ -218,7 +220,7 @@ public class Login extends AppCompatActivity {
         catch (SQLException e)
         {
             e.printStackTrace();
-        }
+        }}
 
     }
 
