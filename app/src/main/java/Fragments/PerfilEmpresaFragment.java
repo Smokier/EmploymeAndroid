@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.employme.Empresa;
 import com.example.employme.R;
 import com.squareup.picasso.Picasso;
 
@@ -25,7 +26,7 @@ public class PerfilEmpresaFragment extends Fragment {
 
     RecyclerView recycler;
     Intent intent;
-    TextView name,pass,email;
+    TextView name,des,email;
     ImageView imageView;
     LinearLayout datos;
     Bundle extras;
@@ -54,6 +55,8 @@ public class PerfilEmpresaFragment extends Fragment {
         email=v.findViewById(R.id.mail);
         email.setText(mail);
 
+        des=v.findViewById(R.id.descripcion);
+
 
         //Foto de la empresa
         Call<String> call = RetrofitClient.getInstance().getApi().getFotoEmp(id,"Android");
@@ -67,6 +70,23 @@ public class PerfilEmpresaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+
+        Call<Empresa> call2= RetrofitClient.getInstance().getApi().getDataEmp(id,"Android");
+
+        call2.enqueue(new Callback<Empresa>() {
+            @Override
+            public void onResponse(Call<Empresa> call, Response<Empresa> response) {
+
+                Empresa emp = response.body();
+                des.setText(emp.getDes_emp());
+
+            }
+
+            @Override
+            public void onFailure(Call<Empresa> call, Throwable t) {
 
             }
         });

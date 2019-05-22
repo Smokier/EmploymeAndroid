@@ -6,7 +6,7 @@
 
 
     <EditText
-        android:id="@+id/descripción"
+        android:id="@+id/descripcion"
         android:layout_width="272dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -25,7 +25,7 @@
         android:layout_marginBottom="12dp"
         android:text="Descripcion de nuestra empresa"
         android:textColor="@color/Negro"
-        app:layout_constraintBottom_toTopOf="@+id/descripción"
+        app:layout_constraintBottom_toTopOf="@+id/descripcion"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
