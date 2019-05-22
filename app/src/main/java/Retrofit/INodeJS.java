@@ -71,4 +71,12 @@ public interface INodeJS  {
     @POST("/aspirantes/knowAndroid")
     @FormUrlEncoded
     Call<String> getInteres(@Field("idEmp") String idE, @Field("idAsp") String idA, @Field("device") String dv);
+
+    @POST("/fotoemp/foto")
+    @FormUrlEncoded
+    Call<String> getFotoEmp(@Field("id") String id, @Field("device") String dev);
+
+    @POST("/updateE/show")
+    @FormUrlEncoded
+    Call<String> getDataEmp(@Field("id") String id, @Field("device")String dev);
 }

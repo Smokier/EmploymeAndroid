@@ -6,7 +6,7 @@
 
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/descripción"
         android:layout_width="272dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -25,7 +25,7 @@
         android:layout_marginBottom="12dp"
         android:text="Descripcion de nuestra empresa"
         android:textColor="@color/Negro"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/descripción"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -65,6 +65,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/datos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -73,7 +74,7 @@
                     android:id="@+id/textView6"
                     android:layout_width="74dp"
                     android:layout_height="wrap_content"
-                    android:text="Nombre" />
+                    android:text="Nombre de Empresa" />
 
                 <EditText
                     android:id="@+id/name"
@@ -106,6 +107,8 @@
                     android:text="RecursosH@promosoft.com" />
 
             </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
