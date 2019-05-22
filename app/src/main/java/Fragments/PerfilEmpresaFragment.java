@@ -20,7 +20,7 @@ public class PerfilEmpresaFragment extends Fragment {
     String tipo=null,nombre=null,mail=null,username=null,foto=null,contra=null;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_configuracion, container, false);
+        View v = inflater.inflate(R.layout.fragment_perfil_emp, container, false);
 
         return v;
     }
