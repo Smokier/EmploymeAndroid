@@ -203,7 +203,6 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("Foto",emp.getFoto_emp());
                         intent.putExtra("Tipo",tipo);
 
-                        Toast.makeText(getApplicationContext(),emp.getId_emp(),Toast.LENGTH_LONG).show();
                         startActivity(intent);
                         finish();
                     }

@@ -78,7 +78,7 @@ public interface INodeJS  {
 
     @POST("/fotoemp/foto")
     @FormUrlEncoded
-    Call<String> getFotoEmp(@Field("id") String id, @Field("device") String dev);
+    Call<Empresa> getFotoEmp(@Field("id") String id, @Field("device") String dev);
 
     @POST("/updateE/show")
     @FormUrlEncoded

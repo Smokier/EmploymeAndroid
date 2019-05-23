@@ -68,8 +68,8 @@ public class AspirantesAdapter extends RecyclerView.Adapter<AspirantesViewHolder
     Context context;
     Intent intent;
 
-    // private static final String Base_URL="http://3.93.218.234/";
-    private static final String Base_URL="http://34.227.162.181/";
+     private static final String Base_URL="http://3.93.218.234/";
+    //private static final String Base_URL="http://34.227.162.181/";
 
 
     public AspirantesAdapter (Context context, List<Aspirante> asps)

@@ -6,12 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.employme.Empresa;
 import com.example.employme.R;
@@ -59,18 +61,21 @@ public class PerfilEmpresaFragment extends Fragment {
 
 
         //Foto de la empresa
-        Call<String> call = RetrofitClient.getInstance().getApi().getFotoEmp(id,"Android");
+        Call<Empresa> call = RetrofitClient.getInstance().getApi().getFotoEmp(id,"Android");
 
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<Empresa>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Picasso.with(getContext()).load("http://34.227.162.181/"+response.body()).error(R.drawable.person_icon) .into(imageView);
+            public void onResponse(Call<Empresa> call, Response<Empresa> response) {
+                Log.d("FotoRuta",response.body().getFoto_emp());
+                Picasso.with(getContext()).load("http://3.93.218.234/"+response.body().getFoto_emp()).error(R.drawable.person_icon).into(imageView);
+
 
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Empresa> call, Throwable t) {
 
+                Toast.makeText(getActivity().getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT);
             }
         });
 
