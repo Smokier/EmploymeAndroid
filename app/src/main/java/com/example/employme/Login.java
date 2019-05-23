@@ -191,6 +191,7 @@ public class Login extends AppCompatActivity {
                         SharedPreferences preferences = getSharedPreferences("sessionEmp", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("IdEmp",emp.getId_emp());
+                        editor.putBoolean("session",true);
                         editor.putString("NomEmp",emp.getNom_emp());
                         editor.commit();
 
@@ -202,7 +203,6 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("Username",emp.getUsu_emp());
                         intent.putExtra("Foto",emp.getFoto_emp());
                         intent.putExtra("Tipo",tipo);
-
                         startActivity(intent);
                         finish();
                     }

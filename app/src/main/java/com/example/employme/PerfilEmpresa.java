@@ -50,7 +50,7 @@ public class PerfilEmpresa extends AppCompatActivity {
         nom.setText(nombre);
         nom.setEnabled(false);
         c.setEnabled(false);
-        Picasso.with(getApplicationContext()).load("http://3.93.218.234/"+foto).error(R.drawable.person_icon).into(pic);
+        Picasso.with(getApplicationContext()).load("http://3.93.218.234/"+foto).fit().error(R.drawable.person_icon).into(pic);
 
         Call<Empresa> call2= RetrofitClient.getInstance().getApi().getDataEmp(extras.getString("Id"),"Android");
 

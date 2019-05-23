@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("Foto",asp.getFoto_asp());
                         intent.putExtra("Tipo",tipo);
                         startActivity(intent);
+                        finish();
                     }
                 }
 
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("Foto",emp.getFoto_emp());
                         intent.putExtra("Tipo",tipo);
                         startActivity(intent);
+                        finish();
                     }
 
                 }

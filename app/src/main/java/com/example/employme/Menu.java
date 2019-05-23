@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -93,7 +94,9 @@ public class Menu extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==RESULT_OK){
-
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setMessage("Espera un momento en lo que se actualiza tu foto de perfil").setCancelable(false).setTitle("Subiendo foto");
+            alert.show();
             Uri imgUri =  data.getData();
             getPath(imgUri);
 
