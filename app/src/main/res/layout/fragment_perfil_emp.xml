@@ -9,23 +9,27 @@
         android:id="@+id/editText2"
         android:layout_width="272dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
         android:text="nuestra empresa busca gente por que estamos cortos de personal"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="18dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
         android:text="Descripcion de nuestra empresa"
         android:textColor="@color/Negro"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -43,14 +47,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="310dp"
-        android:layout_height="150dp"
+        android:layout_height="169dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
@@ -79,8 +83,14 @@
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/inputneg"
                     android:ems="10"
                     android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
                     android:text="Promosoft"
                     android:textColor="@color/Negro" />
             </LinearLayout>
@@ -100,9 +110,15 @@
                     android:id="@+id/mail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/inputneg"
                     android:ems="10"
                     android:inputType="textEmailAddress"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
                     android:text="RecursosH@promosoft.com" />
 
             </LinearLayout>
@@ -122,9 +138,15 @@
                     android:id="@+id/editText3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/inputneg"
                     android:ems="10"
                     android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
                     android:text="Av. de los insurgentes 23" />
 
             </LinearLayout>
@@ -137,10 +159,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         android:text="Puestos disponibles"
         android:textColor="@color/Negro"
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
