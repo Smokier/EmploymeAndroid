@@ -63,6 +63,10 @@ public interface INodeJS  {
     @POST("fotoasp/uploadPhoto")
     Call <String> uploadPhoto(@Part MultipartBody.Part photo,@Part ("Id") RequestBody  userId);
 
+    @Multipart
+    @POST("fotoemp/uploadPhoto")
+    Call<String> uploadPhotoEmp(@Part MultipartBody.Part photo,@Part ("Id") RequestBody  userId);
+
 
     @POST("/aspirantes/interesAndroid")
     @FormUrlEncoded
@@ -71,4 +75,12 @@ public interface INodeJS  {
     @POST("/aspirantes/knowAndroid")
     @FormUrlEncoded
     Call<String> getInteres(@Field("idEmp") String idE, @Field("idAsp") String idA, @Field("device") String dv);
+
+    @POST("/fotoemp/foto")
+    @FormUrlEncoded
+    Call<Empresa> getFotoEmp(@Field("id") String id, @Field("device") String dev);
+
+    @POST("/updateE/show")
+    @FormUrlEncoded
+    Call<Empresa> getDataEmp(@Field("id") String id, @Field("device")String dev);
 }

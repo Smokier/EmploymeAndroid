@@ -74,7 +74,7 @@ public class PerfilAspirante extends YouTubeBaseActivity implements YouTubePlaye
         nom.setText(nombre);
         nom.setEnabled(false);
         c.setEnabled(false);
-        Picasso.with(getApplicationContext()).load("http://34.227.162.181/" + foto).error(R.drawable.person_icon).into(pic);
+        Picasso.with(getApplicationContext()).load("http://3.93.218.234/" + foto).error(R.drawable.person_icon).into(pic);
 
         repositories();
         if(extras.getString("Video")!= null)

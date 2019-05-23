@@ -13,20 +13,25 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import Retrofit.RetrofitClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class PerfilEmpresa extends AppCompatActivity {
     Intent intent;
     Bundle extras;
     String nombre,correo,foto;
     Button btn;
     ImageView pic;
-    EditText nom;
+    EditText nom,des;
     EditText c;
     LinearLayout p;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_perfil);
+        setContentView(R.layout.fragment_perfil_emp);
 
 
         intent = getIntent();
@@ -38,17 +43,33 @@ public class PerfilEmpresa extends AppCompatActivity {
         pic = findViewById(R.id.foto_perfil);
         nom= findViewById(R.id.name);
         c=findViewById(R.id.mail);
-        p=findViewById(R.id.pass);
-        btn = findViewById(R.id.cambios);
+        des=findViewById(R.id.descripcion);
 
 
         c.setText(correo);
         nom.setText(nombre);
         nom.setEnabled(false);
-        btn.setVisibility(View.INVISIBLE);
         c.setEnabled(false);
-        p.setVisibility(View.INVISIBLE);
-        Picasso.with(getApplicationContext()).load("http://3.93.218.234/"+foto).error(R.drawable.person_icon).into(pic);
+        Picasso.with(getApplicationContext()).load("http://3.93.218.234/"+foto).fit().error(R.drawable.person_icon).into(pic);
+
+        Call<Empresa> call2= RetrofitClient.getInstance().getApi().getDataEmp(extras.getString("Id"),"Android");
+
+        call2.enqueue(new Callback<Empresa>() {
+            @Override
+            public void onResponse(Call<Empresa> call, Response<Empresa> response) {
+
+                Empresa emp = response.body();
+                Toast.makeText(getApplicationContext(),response.body().getDes_emp(),Toast.LENGTH_SHORT).show();
+                des.setText(emp.getDes_emp());
+
+            }
+
+            @Override
+            public void onFailure(Call<Empresa> call, Throwable t) {
+                Toast.makeText(PerfilEmpresa.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
 

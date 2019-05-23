@@ -6,11 +6,14 @@ public class Empresa {
     private String usu_emp;
     private String id_emp;
     private String email_emp;
+
+
+
     private String psw_emp;
     private String sitio_pemp;
     private String numtel_pemp;
     private String foto_emp;
-
+    private String des_emp,ubi_pemp;
     public Empresa ()
     {
 
@@ -86,5 +89,21 @@ public class Empresa {
 
     public void setId_emp(String id_emp) {
         this.id_emp = id_emp;
+    }
+
+    public String getDes_emp() {
+        return des_emp;
+    }
+
+    public void setDes_emp(String des_emp) {
+        this.des_emp = des_emp;
+    }
+
+    public String getUbi_pemp() {
+        return ubi_pemp;
+    }
+
+    public void setUbi_pemp(String ubi_pemp) {
+        this.ubi_pemp = ubi_pemp;
     }
 }

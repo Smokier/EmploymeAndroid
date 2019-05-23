@@ -65,8 +65,8 @@ public class InteresadasAdapter extends RecyclerView.Adapter<EmpresasViewHolder>
     public List<Empresa> emps;
     Context context;
 
-    /*private static final String Base_URL="http://3.93.218.234/";*/
-    private static final String Base_URL="http://34.227.162.181/";
+    private static final String Base_URL="http://3.93.218.234/";
+    /*private static final String Base_URL="http://34.227.162.181/";*/
 
 
     public InteresadasAdapter (Context context, List<Empresa> emps)
@@ -96,6 +96,7 @@ public class InteresadasAdapter extends RecyclerView.Adapter<EmpresasViewHolder>
                 intent = new Intent(context,PerfilEmpresa.class);
                 intent.putExtra("Nombre",emps.get(i).getNom_emp());
                 intent.putExtra("Email",emps.get(i).getEmail_emp());
+                intent.putExtra("Id",emps.get(i).getId_emp());
                 intent.putExtra("Foto",emps.get(i).getFoto_emp());
                 context.startActivity(intent);
             }
