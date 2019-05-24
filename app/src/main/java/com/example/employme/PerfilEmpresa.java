@@ -24,7 +24,7 @@ public class PerfilEmpresa extends AppCompatActivity {
     String nombre,correo,foto;
     Button btn;
     ImageView pic;
-    EditText nom,des;
+    EditText nom,des,dir;
     EditText c;
     LinearLayout p;
 
@@ -44,6 +44,7 @@ public class PerfilEmpresa extends AppCompatActivity {
         nom= findViewById(R.id.name);
         c=findViewById(R.id.mail);
         des=findViewById(R.id.descripcion);
+        dir = findViewById(R.id.dir);
 
 
         c.setText(correo);
@@ -59,8 +60,8 @@ public class PerfilEmpresa extends AppCompatActivity {
             public void onResponse(Call<Empresa> call, Response<Empresa> response) {
 
                 Empresa emp = response.body();
-                Toast.makeText(getApplicationContext(),response.body().getDes_emp(),Toast.LENGTH_SHORT).show();
                 des.setText(emp.getDes_emp());
+                dir.setText(emp.getUbi_pemp());
 
             }
 

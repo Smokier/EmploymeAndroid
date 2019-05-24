@@ -6,17 +6,18 @@
 
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/descripcion"
         android:layout_width="272dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="236dp"
         android:ems="10"
         android:inputType="textMultiLine"
         android:text="nuestra empresa busca gente por que estamos cortos de personal"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -28,7 +29,7 @@
         android:layout_marginBottom="20dp"
         android:text="Descripcion de nuestra empresa"
         android:textColor="@color/Negro"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/descripcion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -135,7 +136,7 @@
                     android:text="Direccion" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/dir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -146,83 +147,12 @@
                     android:paddingLeft="20dp"
                     android:paddingTop="10dp"
                     android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="Av. de los insurgentes 23" />
+                    android:paddingBottom="10dp"/>
 
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        android:text="Puestos disponibles"
-        android:textColor="@color/Negro"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="395dp"
-        android:layout_height="104dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="395dp"
-                android:layout_height="101dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="537dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Programador en C#" />
-
-                    <EditText
-                        android:id="@+id/editText5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:text="Requisitos: saber programar en C#, tener primaria terminada, traer tu propio plato" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
 
 
 </android.support.constraint.ConstraintLayout>
